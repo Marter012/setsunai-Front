@@ -9,7 +9,7 @@ export const ContainerTypeRolls = styled.div`
   text-align: center;
   overflow: hidden;
   .Title {
-    height: 20vh;
+    height: 15vh;
     margin: 0;
     background-image: url("https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754258745/SETSUNAI/ChatGPT_Image_1_jul_2025_11_23_14_a.m._wqv2k3.png");
     font-size: 3rem;
@@ -28,11 +28,10 @@ export const ContainerTypeRoll = styled.div`
 `;
 export const CardTypeRoll = styled.div`
   width: 30%;
-  height: 90%;
+  height: 100%;
   display: flex;
     background-image: url("https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754258745/SETSUNAI/ChatGPT_Image_1_jul_2025_11_23_14_a.m._wqv2k3.png");
   flex-direction: column;
-  justify-content: space-between;
   border-bottom-right-radius: 50px;
   p {
     margin: 0;
@@ -41,6 +40,6 @@ export const CardTypeRoll = styled.div`
     font-size: 2.5rem;
   }
   .DescriptionRoll {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;

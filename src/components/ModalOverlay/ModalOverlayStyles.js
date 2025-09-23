@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const ModalOverlayStyled = styled(motion.div)`
   position: fixed;
@@ -8,10 +8,6 @@ export const ModalOverlayStyled = styled(motion.div)`
   z-index: 10;
   width: 100vw;
   height: 100vh;
-
-  ${({ isHidden }) =>
-    !isHidden &&
-    css`
-      backdrop-filter: blur(4px);
-    `}
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4);
 `;

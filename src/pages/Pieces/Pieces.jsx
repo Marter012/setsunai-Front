@@ -1,70 +1,26 @@
 import React from "react";
 import { PrincipalContainer } from "../../Styles/GlobalStyles";
-import { CardPieces, CardsContainerPieces, PiecesContainer } from "./PiecesStyles";
-
+import {
+  CardPieces,
+  CardsContainerPieces,
+  PiecesContainer,
+} from "./PiecesStyles";
+import { useSelector } from "react-redux";
 const Pieces = () => {
+  const pieces = useSelector((state) => state.pieces.items);
+
   return (
     <PrincipalContainer>
       <PiecesContainer>
         <p>! Conoce nuestras piezas !</p>
         <CardsContainerPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces><CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces><CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces><CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces><CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
-
-          <CardPieces>
-            <img src="https://t4.ftcdn.net/jpg/01/35/23/71/360_F_135237184_vZnNVRuaHQZclXjxJ7ftEa3IyerhDF2y.jpg" alt=""/>
-            <p>California</p>
-            <text>Langostinos rebosados, con queso filandia saborazado, y palta</text>
-          </CardPieces>
+          {pieces.map((piece) => (
+            <CardPieces key={piece.id}>
+              <img src={piece.img} alt={piece.name} />
+              <h4>{piece.name}</h4>
+              <p>{piece.description}</p>
+            </CardPieces>
+          ))}
         </CardsContainerPieces>
       </PiecesContainer>
     </PrincipalContainer>

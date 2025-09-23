@@ -40,20 +40,21 @@ export const CardPieces = styled.div`
   border: 5px solid #bfa878;
   border-radius: 5px;
   p,
-  text {
+  h4 {
     margin: 0;
     padding: 0;
   }
   p {
-    font-size: 2rem;
+    font-size: 1rem;
+    font-family: "Cormorant Garamond", serif;
   }
   img {
     width: 90%;
     height: 50%;
     object-fit: cover;
   }
-  text {
-    font-family: "Cormorant Garamond", serif;
+  h4 {
     font-weight: 800;
+    font-size: 1.5rem;
   }
 `;

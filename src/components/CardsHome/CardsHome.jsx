@@ -8,8 +8,8 @@ import {
 } from "./CardsHomeStyles";
 
 const CardsHome = () => {
-  const [backgroundContainer, setbackgroundContainer] = useState("#f4e9d8");
-  // 	•	Negro profundo (#191919)
+  const [backgroundContainer, setbackgroundContainer] = useState("transparent");
+
   return (
     <ContainerCardsHome $backgroundContainer={backgroundContainer} $zIndex={1}>
       <p className="SUSHI">SUSHI</p>
@@ -18,7 +18,12 @@ const CardsHome = () => {
         $backgroundContainer={backgroundContainer}
         onClick={() => setbackgroundContainer("transparent")}
       >
-        <CardHome onClick={(e) =>  {e.stopPropagation(); setbackgroundContainer("#bfa878")}}>
+        <CardHome
+          onClick={(e) => {
+            e.stopPropagation();
+            setbackgroundContainer("#bfa878");
+          }}
+        >
           <p className="Title">Veggis</p>
           <img
             src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
@@ -30,7 +35,12 @@ const CardsHome = () => {
             vegetales, con un sabor fresco y ligero.
           </p>
         </CardHome>
-        <CardHome onClick={(e) =>  {e.stopPropagation(); setbackgroundContainer("#1d3e32")}}>
+        <CardHome
+          onClick={(e) => {
+            e.stopPropagation();
+            setbackgroundContainer("#1d3e32");
+          }}
+        >
           <p className="Title">Tradicionales</p>
           <img
             src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
