@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { ContainerOrderSent } from "./OrderSentStyles";
 import { useDispatch, useSelector } from "react-redux";
-import { activeOrder, clearCart, toggleCart } from "../../../store/slice/cartSlice";
+import {
+  activeOrder,
+  clearCart,
+  toggleCart,
+} from "../../../store/slice/cartSlice";
 
 const OrderSent = () => {
   const [name, setName] = useState("");
+  const [errors, setErrors] = useState({ name: false, paymentMethod: false });
+
   const [paymentMethod, setPaymentMethod] = useState("");
   const disptach = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
@@ -15,15 +21,47 @@ const OrderSent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let hasError = false;
+    const newErrors = { name: false, paymentMethod: false };
+
+    if (!name.trim()) {
+      newErrors.name = true;
+      hasError = true;
+    }
+
+    if (!paymentMethod) {
+      newErrors.paymentMethod = true;
+      hasError = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasError) return;
     if (!name || !paymentMethod) {
       alert("Completa todos los campos");
       return;
     }
-    alert(
-      `Pedido confirmado!\nNombre: ${name}\nMétodo de pago: ${paymentMethod} ,${cartItems.map(
-        (item) => `\n- ${item.name} x${item.quantity}`
-      )}\nTotal: $${total.toFixed(2)}`
-    );
+    const phone = "543516478584";
+
+    const msg = `*📦 Pedido confirmado!*
+👤 Nombre: *${name}*
+💳 Método de pago: *${paymentMethod}*
+
+🧾 *Detalle del pedido:*
+${cartItems
+  .map((item) => `- ${item.quantity} x *${item.name}* — $${item.price}`)
+  .join("\n")}
+
+💰 *Total:* $${total}
+
+🙏 ¡Gracias por tu compra!`;
+
+    const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+    const baseUrl = isMobile
+      ? "https://wa.me"
+      : "https://web.whatsapp.com/send";
+    const url = `${baseUrl}?phone=${phone}&text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank", "noopener");
     setName("");
     setPaymentMethod("");
     disptach(clearCart());
@@ -39,7 +77,13 @@ const OrderSent = () => {
         type="text"
         placeholder="Ingresa tu nombre y apellido"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          setName(e.target.value);
+          if (e.target.value.trim() !== "") {
+            setErrors((prev) => ({ ...prev, name: false }));
+          }
+        }}
+        className={errors.name ? "error" : ""}
       />
       <p>Tienes {cartItems.length} productos en tu carrito.</p>
       <p className="total">Total: ${total.toFixed(2)}</p>
@@ -50,16 +94,23 @@ const OrderSent = () => {
         <span
           className={`payment-option ${
             paymentMethod === "EFECTIVO" ? "selected" : ""
-          }`}
-          onClick={() => setPaymentMethod("EFECTIVO")}
+          } ${errors.paymentMethod ? "error" : ""}`}
+          onClick={() => {
+            setPaymentMethod("EFECTIVO");
+            setErrors((prev) => ({ ...prev, paymentMethod: false }));
+          }}
         >
           Efectivo 💵
         </span>
+
         <span
           className={`payment-option ${
             paymentMethod === "TRANSFERENCIA" ? "selected" : ""
-          }`}
-          onClick={() => setPaymentMethod("TRANSFERENCIA")}
+          } ${errors.paymentMethod ? "error" : ""}`}
+          onClick={() => {
+            setPaymentMethod("TRANSFERENCIA");
+            setErrors((prev) => ({ ...prev, paymentMethod: false }));
+          }}
         >
           Transferencia 🏦
         </span>

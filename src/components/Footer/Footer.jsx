@@ -2,10 +2,20 @@ import React from "react";
 import { ContainerFooter, ContainerIconFooter } from "./FooterStyles";
 import { FaWhatsapp } from "react-icons/fa6";
 const Footer = () => {
-  const text = "Hola, me gustaria realizar un pedido!";
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const msg = `Hola, me gustaría realizar un pedido!!`;
+    const phone = "543516478584";
+    const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+    const baseUrl = isMobile
+      ? "https://wa.me"
+      : "https://web.whatsapp.com/send";
+    const url = `${baseUrl}?phone=${phone}&text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank", "noopener");
+  };
   return (
     <ContainerFooter>
-      <ContainerIconFooter target="_blank" href={`https://wa.me/3516478584?text=${text}`}>
+      <ContainerIconFooter onClick={handleSubmit}>
         <p>Contactate con nosotros</p>
         <FaWhatsapp />
       </ContainerIconFooter>

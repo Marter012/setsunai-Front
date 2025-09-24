@@ -93,6 +93,7 @@ export const CardsCart = styled.div`
   gap: 15px;
   overflow-y: auto;
   scrollbar-width: none;
+  text-align: center;
 `;
 
 export const CardCart = styled.div`

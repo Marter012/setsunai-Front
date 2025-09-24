@@ -36,7 +36,7 @@ export const SectionCardsHome = styled.div`
   position: relative;
   z-index: +5;
   p {
-    background-color: ${(props) => props.$backgroundContainer};
+    background-color: ${(props) => props.$backgroundContainer == "transparent" ? "#bfa878" : props.$backgroundContainer };
   }
 `;
 

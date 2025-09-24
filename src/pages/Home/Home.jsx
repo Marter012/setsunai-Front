@@ -9,7 +9,7 @@ const Home = () => {
     <PrincipalContainer>
       <CardsHome />
       <TypeRolls />
-      <Promotion/>
+      {/* <Promotion/> */}
     </PrincipalContainer>
   );
 };

@@ -74,6 +74,15 @@ export const ContainerOrderSent = styled.div`
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }
+  .error {
+    border: 2px solid red;
+    border-radius: 6px;
+  }
+
+  .payment-option.error {
+    border: 2px solid red;
+    border-radius: 6px;
+  }
 
   button {
     background-color: #bfa878;
@@ -91,8 +100,8 @@ export const ContainerOrderSent = styled.div`
     transform: scale(1.05);
     background-color: #d1b887;
   }
-  .total { 
+  .total {
     font-weight: 700;
     font-size: 1.2rem;
-  } 
+  }
 `;
