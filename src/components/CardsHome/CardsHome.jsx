@@ -65,7 +65,7 @@ const CardsHome = () => {
           />
         </div>
         <div className="Right">
-          <p>Promocion </p>
+          <p className="Tipe">Promocion </p>
           <p className="Title">Combo Boom</p>
           <p className="NPieces">15p</p>
           <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
@@ -87,7 +87,7 @@ const CardsHome = () => {
           />
         </div>
         <div className="Left">
-          <p>Promocion </p>
+          <p className="Tipe">Promocion </p>
           <p className="Title">Combo Boom</p>
           <p className="NPieces">15p</p>
           <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
