@@ -43,9 +43,23 @@ export const GlobalStyles = createGlobalStyle`
 
 
 `;
+
 export const PrincipalContainer = styled.div`
   width: 100%;
   min-height: 90vh;
   overflow-x: hidden;
-  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* espacio entre secciones */
+
+  /* Tablets */
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  /* Móviles */
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;

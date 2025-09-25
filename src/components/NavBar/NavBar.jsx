@@ -1,35 +1,47 @@
-import React from "react";
-import {
-  ContainerLinks,
-  ContainerNavBar,
-  ContainerTitle,
-} from "./NavBarStyled";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleCart } from "../../store/slice/cartSlice";
 import ModalCart from "./ModalCart/ModalCart";
 import IconCart from "./IconCart/IconCart";
 import Overlay from "../ModalOverlay/ModalOverlay";
-import { useSelector } from "react-redux";
+import {
+  NavContainer,
+  Title,
+  Hamburger,
+  CartIconContainer,
+  LinksContainer,
+} from "./NavBarStyled";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const activeCart = useSelector((state) => state.cart.active);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-   const active = useSelector(state => state.cart.active);
-  
+  const handleLinkClick = () => setMenuOpen(false);
+
   return (
     <>
-      {active && <Overlay />}
-      <ContainerNavBar>
-        <ModalCart active={active} />
-        <ContainerTitle>
+      {activeCart && <Overlay />}
+      <NavContainer>
+        <Hamburger onClick={() => setMenuOpen(!menuOpen)}>☰</Hamburger>
+
+        <Title>
           <Link to="/">SETSU</Link>
-        </ContainerTitle>
-        <ContainerLinks>
-          <Link to="/">Inicio</Link>
-          <Link to="/Pieces">Piezas</Link>
-          <Link to="/PlaceOrder">Hacer Pedido</Link>
-          <IconCart
-          />
-        </ContainerLinks>
-      </ContainerNavBar>
+        </Title>
+
+        <LinksContainer open={menuOpen}>
+          <Link to="/" onClick={handleLinkClick}>Inicio</Link>
+          <Link to="/Pieces" onClick={handleLinkClick}>Piezas</Link>
+          <Link to="/PlaceOrder" onClick={handleLinkClick}>Hacer Pedido</Link>
+        </LinksContainer>
+
+        <CartIconContainer>
+          <IconCart onClick={() => dispatch(toggleCart())} />
+        </CartIconContainer>
+
+        <ModalCart active={activeCart} />
+      </NavContainer>
     </>
   );
 };
