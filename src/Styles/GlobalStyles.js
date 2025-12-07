@@ -23,6 +23,7 @@ export const GlobalStyles = createGlobalStyle`
       -webkit-tap-highlight-color: transparent;
       font-family: "Cormorant Garamond", serif;
       overflow-x: hidden;
+      cursor: default;
     }
 `;
 
@@ -34,7 +35,7 @@ export const PrincipalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-
+  text-align: center;
   /* Tablets */
   @media (max-width: 768px) {
     gap: 15px;

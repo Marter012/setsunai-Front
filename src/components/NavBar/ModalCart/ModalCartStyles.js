@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
 import { MdDeleteSweep } from "react-icons/md";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export const ContainerModalCart = styled.div`
   width: 400px;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +43,9 @@ export const ContainerModalCart = styled.div`
   @media (max-width: 480px) {
     /* móviles */
     width: 90%;
-
+    h4 {
+      font-size: 2.5rem;
+    }
     p {
       font-size: 1rem;
     }
@@ -81,10 +84,28 @@ export const SectionModalCart = styled.div`
 
 export const CartDeleteIcon = styled(MdDeleteSweep)`
   color: rgb(191, 168, 120);
-  font-size: 2rem;
   position: absolute;
   top: 15px;
+  left: 15px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8);
+    scale: 1.2;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    top: 10px;
+    right: 10px;
+  }
+`;
+
+export const CartCloseIcon = styled(IoMdCloseCircle)`
   right: 15px;
+   color: rgb(191, 168, 120);
+  position: absolute;
+  top: 15px;
   cursor: pointer;
 
   &:hover {

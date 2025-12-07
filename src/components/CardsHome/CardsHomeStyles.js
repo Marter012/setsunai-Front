@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // CONTENEDORES PRINCIPALES
@@ -144,7 +145,7 @@ export const HomeCTAGroup = styled.div`
   }
 `;
 
-export const HomeBtn = styled.a`
+export const HomeBtn = styled(Link)`
   background-color: #1d3e32;
   color: #f4e9d8;
   padding: 0.8rem 1.6rem;
@@ -208,6 +209,7 @@ export const HomeSmallCard = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0.3;
   }
   .divContainer {
     position: absolute;

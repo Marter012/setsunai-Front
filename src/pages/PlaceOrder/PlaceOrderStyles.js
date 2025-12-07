@@ -6,11 +6,11 @@ export const PlaceOrderContainer = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-
+  text-align: center;
   p {
     font-size: 3rem;
     margin: 20px;
-    font-weight : 800;
+    font-weight: 800;
   }
 `;
 
@@ -19,9 +19,10 @@ export const SelectButtonsMenu = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 10px;
--webkit-tap-highlight-color: transparent;
-  outline: none;
   button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    color: black;
     width: 100%;
     background-color: rgba(30, 61, 50, 0.3);
     padding: 10px 15px;

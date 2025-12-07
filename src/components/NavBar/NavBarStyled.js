@@ -9,15 +9,27 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   position: fixed;
   z-index: 100;
-`;
-
-export const Title = styled.div`
-  font-size: 2rem;
-  padding-left: 50px;
-  font-weight: bold;
-  a {
-    color: white;
+  .title {
+    height: 100%;
+    font-size: 2rem;
+    padding-left: 50px;
+    font-weight: bold;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: center;
     text-decoration: none;
+    cursor: auto;
+    p {
+      color: white;
+      border: none;
+    }
+    img {
+      width: 60px;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 `;
 

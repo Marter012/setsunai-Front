@@ -4,7 +4,6 @@ import ModalCart from "./ModalCart/ModalCart";
 import IconCart from "./IconCart/IconCart";
 import {
   NavContainer,
-  Title,
   Hamburger,
   CartIconContainer,
   LinksContainer,
@@ -19,9 +18,10 @@ const NavBar = () => {
       <NavContainer>
         <Hamburger onClick={() => setMenuOpen(!menuOpen)}>☰</Hamburger>
 
-        <Title>
-          <Link to="/">SETSU</Link>
-        </Title>
+        <Link to="/" onClick={handleLinkClick} className="title">
+          <img src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1765149464/SETSUNAI/Visual%20Items/logo_en_dorado_unqwwb.png" alt="" />
+          <p >SETSU</p>
+        </Link>
 
         <LinksContainer open={menuOpen}>
           <Link to="/" onClick={handleLinkClick}>

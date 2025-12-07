@@ -6,6 +6,7 @@ import {
   SectionModalCart,
   TotalCart,
   CartDeleteIcon,
+  CartCloseIcon,
 } from "./ModalCartStyles";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -59,6 +60,12 @@ const ModalCart = ({ iconRef }) => {
               <div className="title">
                 <h4>Vas a pedir</h4>
                 <CartDeleteIcon onClick={() => dispatch(clearCart())} />
+                <CartCloseIcon
+                  onClick={() => {
+                    dispatch(closeCart());
+                    dispatch(closeOverlay());
+                  }}
+                />
               </div>
               <CardsCart>
                 {itemsCart.length === 0 ? (

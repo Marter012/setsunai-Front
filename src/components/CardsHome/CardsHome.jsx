@@ -61,8 +61,8 @@ export default function CardsHome() {
           </HomeInfoGrid>
 
           <HomeCTAGroup>
-            <HomeBtn href="/PlaceOrder">Hacer pedido</HomeBtn>
-            <HomeBtn href="/Pieces">Ver Piezas</HomeBtn>.
+            <HomeBtn to="/PlaceOrder">Hacer pedido</HomeBtn>
+            <HomeBtn to="/Pieces">Ver Piezas</HomeBtn>
           </HomeCTAGroup>
         </HomeDescriptionTitle>
 
@@ -79,7 +79,7 @@ export default function CardsHome() {
                     <p>{item?.description}</p>
                     <p className="price">${item?.price_8p}</p>
                     <div>
-                      <ButtonAddItem item={{...item,finalPrice : item.price_8p}} />
+                      <ButtonAddItem item={{...item,selectedSize : 8,finalPrice : item.price_8p}} />
                     </div>
                   </div>
                 </HomeSmallCard>

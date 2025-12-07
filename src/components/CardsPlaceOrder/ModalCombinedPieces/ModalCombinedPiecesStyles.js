@@ -21,6 +21,7 @@ export const ModalContainerCP = styled(motion.div)`
   align-items: center;
   gap: 20px;
 
+  border: 2px solid #f4e9d8;
   h2 {
     font-size: 3rem;
     margin-top: 10px;
@@ -139,7 +140,7 @@ export const ModalCardCombinedPieces = styled(CardOrderPieces)`
       flex-direction: column;
     }
     h4 {
-    padding: 20px;
+      padding: 20px;
       font-size: 1.2rem;
     }
     .left {
