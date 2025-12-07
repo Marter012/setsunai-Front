@@ -23,29 +23,28 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
       {comboWithSelectedId.map((pieces) => {
         return (
           <ModalCardCombinedPieces key={pieces._id}>
-            <div className="left">
-              <h4>
-                {pieces.pieces.map((piece) => piece.pieceName).join(" || ")}
-              </h4>
-              <div>
-                <p>Rolls distintos : {pieces.take}</p>
-                <p>Cantidad de piezas por roll : {pieces.perRoll}</p>
+            <h4>{pieces.pieces.map((piece) => piece.pieceName).join(" • ")}</h4>
+            <div className="separatorDiv">
+              <div className="left">
+                  <p>Rolls distintos : {pieces.take}</p>
+                  <p>Cantidad de piezas por roll : {pieces.perRoll}</p>
               </div>
-            </div>
-            <div className="right">
-              <p>{pieces.totalPieces} piezas</p>
-              <p>${pieces.finalPrice}</p>
-            </div>
-            <div className="buttons">
-              <ButtonAddItem
-                item={{
-                  ...pieces,
-                  code: pieces.comboCode,
-                  selectedSize: pieces.totalPieces,
-                  name: combinedSelected.name,
-                  img: combinedSelected.img,
-                }}
-              />
+              <div className="right">
+                <div className="dataSent">
+                  <p>{pieces.totalPieces} piezas</p>
+                  <p>${pieces.finalPrice}</p>
+                </div>
+
+                <ButtonAddItem
+                  item={{
+                    ...pieces,
+                    code: pieces.comboCode,
+                    selectedSize: pieces.totalPieces,
+                    name: combinedSelected.name,
+                    img: combinedSelected.img,
+                  }}
+                />
+              </div>
             </div>
           </ModalCardCombinedPieces>
         );

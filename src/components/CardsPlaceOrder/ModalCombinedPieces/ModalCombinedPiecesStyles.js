@@ -7,7 +7,6 @@ export const ModalContainerCP = styled(motion.div)`
   height: 80%;
   margin-top: 5vh;
   position: fixed;
-  background: ${({ img }) => `url(${img})`};
   z-index: +100;
   top: 50%;
   left: 50%;
@@ -23,7 +22,7 @@ export const ModalContainerCP = styled(motion.div)`
   gap: 20px;
 
   h2 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-top: 10px;
     margin-bottom: 0;
     color: #f4e9d8;
@@ -34,14 +33,14 @@ export const ModalContainerCP = styled(motion.div)`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.4;
+    opacity: 0.5;
     z-index: -1;
   }
 
   /* 📱 TABLET */
   @media (max-width: 900px) {
     width: 80%;
-    height: 80%;
+    height: 70%;
     h2 {
       font-size: 2.2rem;
     }
@@ -59,52 +58,58 @@ export const ModalContainerCP = styled(motion.div)`
 
 export const ModalCardCombinedPieces = styled(CardOrderPieces)`
   width: 90%;
-  min-height: 80px;
-  padding-top: 0;
-  padding-bottom: 0;
-  cursor: pointer;
-
+  min-height: 100px !important;
+  padding: 0;
+  flex-direction: column;
   &&:hover {
     filter: brightness(1.1);
   }
+  border-bottom-left-radius: 10px;
 
   p,
   h4 {
     margin: 0;
     padding: 0;
   }
-
+  h4 {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+  .separatorDiv {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
   .left {
-    border-left: 3px solid black;
-    width: 70%;
+    width: 50%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
-
-    h4 {
+    justify-content: space-around;
+    p {
       font-size: 1.2rem;
-      text-align: start;
-    }
-
-    div {
-      display: flex;
-      justify-content: space-evenly;
-
-      p {
-        font-size: 1rem;
-      }
     }
   }
 
   .right {
-    width: 30%;
+    width: 60%;
     display: flex;
-    flex-direction: column;
-
+    .dataSent {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     p {
       font-size: 1.8rem;
       font-weight: 800;
+    }
+    div {
+      width: 50%;
+      align-items: center;
+      gap: 10px;
     }
   }
 
@@ -129,23 +134,22 @@ export const ModalCardCombinedPieces = styled(CardOrderPieces)`
 
   /* 📱 MOBILE */
   @media (max-width: 600px) {
-    min-height: 100px;
-
+    min-height: 200px !important;
+    .separatorDiv {
+      flex-direction: column;
+    }
+    h4 {
+    padding: 20px;
+      font-size: 1.2rem;
+    }
     .left {
-      width: 70%;
-
-      h4 {
-        font-size: 1.2rem;
-      }
-
-      div p {
-        font-size: 0.85rem;
-      }
+      width: 100%;
+      height: 30%;
     }
 
     .right {
-      width: 20%;
-
+      width: 100%;
+      height: 100%;
       p {
         font-size: 1.3rem;
       }

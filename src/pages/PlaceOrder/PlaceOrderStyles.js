@@ -19,7 +19,8 @@ export const SelectButtonsMenu = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 10px;
-
+-webkit-tap-highlight-color: transparent;
+  outline: none;
   button {
     width: 100%;
     background-color: rgba(30, 61, 50, 0.3);

@@ -19,7 +19,7 @@ import OrderSent from "../OrderSent/OrderSent";
 import Overlay from "../../ModalOverlay/ModalOverlay";
 import { closeOverlay } from "../../../store/slice/overlaySlice";
 
-const ModalCart = ({iconRef}) => {
+const ModalCart = ({ iconRef }) => {
   const itemsCart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const orderState = useSelector((state) => state.cart.stateOrder);
@@ -27,7 +27,7 @@ const ModalCart = ({iconRef}) => {
 
   const cartRef = useRef(null);
 
- useEffect(() => {
+  useEffect(() => {
     if (!activeCart) return;
 
     const handleClickOutside = (event) => {
@@ -56,8 +56,10 @@ const ModalCart = ({iconRef}) => {
             <OrderSent />
           ) : (
             <>
-              <h4>Vas a pedir</h4>
-              <CartDeleteIcon onClick={() => dispatch(clearCart())} />
+              <div className="title">
+                <h4>Vas a pedir</h4>
+                <CartDeleteIcon onClick={() => dispatch(clearCart())} />
+              </div>
               <CardsCart>
                 {itemsCart.length === 0 ? (
                   <p className="empty-cart">

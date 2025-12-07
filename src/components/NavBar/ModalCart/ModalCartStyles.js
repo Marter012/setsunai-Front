@@ -19,11 +19,9 @@ export const ContainerModalCart = styled.div`
   position: fixed;
   h4 {
     width: 100%;
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 0;
-    height: 10%;
     text-align: center;
-    border-bottom: 3px solid black;
   }
 
   p {
@@ -36,10 +34,6 @@ export const ContainerModalCart = styled.div`
     /* tablets */
     width: 400px;
 
-    h4 {
-      font-size: 1.5rem;
-    }
-
     p {
       font-size: 1.2rem;
     }
@@ -48,10 +42,6 @@ export const ContainerModalCart = styled.div`
   @media (max-width: 480px) {
     /* móviles */
     width: 90%;
-
-    h4 {
-      font-size: 1.2rem;
-    }
 
     p {
       font-size: 1rem;
@@ -67,10 +57,19 @@ export const SectionModalCart = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  div {
-    h4 {
-      border: none;
-    }
+  .title {
+    width: 100%;
+    height: 10%;
+    border-bottom: 3px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  svg {
+    position: absolute;
+    font-size: 3rem;
+    top: 10%;
   }
   img {
     width: 100% !important;
@@ -146,7 +145,6 @@ export const CardCart = styled.div`
   }
   h4 {
     font-size: 1.2rem;
-    width: 40%;
   }
 
   p {

@@ -35,14 +35,6 @@ const Pieces = () => {
               </div>
             </>
           ))}
-          {/* {pieces.map((piece) => (
-            <CardPieces key={piece.id}>
-              <img src={piece.img} alt={piece.name} />
-              <h4>{piece.name}</h4>
-              <p>{piece.description}</p>
-              <p className="protein">Ingrediente Principal : <br /> {piece.protein}</p>
-            </CardPieces>
-          ))} */}
         </CardsContainerPieces>
       </PiecesContainer>
     </PrincipalContainer>
