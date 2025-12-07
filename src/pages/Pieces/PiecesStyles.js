@@ -7,13 +7,20 @@ export const PiecesContainer = styled.div`
   overflow: hidden;
   width: 100%;
   padding: 50px 20px;
-  p{
+  p {
     font-size: 3rem;
     font-weight: 800;
   }
-  p,h3{
-    margin: 0;
-    padding: 0;
+  @media (max-width: 900px) {
+    p {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    p {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -51,11 +58,8 @@ export const CardsContainerPieces = styled.div`
     margin-bottom: 25px;
     color: #f4e9d8;
     font-size: 3rem;
-    text-shadow: 
-      -1px -1px 0 #bfa878,  
-       1px -1px 0 #bfa878,
-      -1px  1px 0 #bfa878,
-       1px  1px 0 #bfa878;
+    text-shadow: -1px -1px 0 #bfa878, 1px -1px 0 #bfa878, -1px 1px 0 #bfa878,
+      1px 1px 0 #bfa878;
   }
 
   .cardsCategory {
@@ -67,8 +71,8 @@ export const CardsContainerPieces = styled.div`
 `;
 
 export const CardPieces = styled.div`
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 350px;
   background-color: #f4e9d8;
   display: flex;
   flex-direction: column;
@@ -82,28 +86,29 @@ export const CardPieces = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   }
 
   img {
     width: 90%;
-    height: 50%;
+    height: 30%;
     object-fit: cover;
     border-radius: 5px;
   }
 
-  p, h4 {
+  p,
+  h4 {
     margin: 0;
     padding: 0;
   }
-h4{
-  font-size: 2rem;
-}
+  h4 {
+    font-size: 2rem;
+  }
   .protein {
     font-size: 0.85rem;
     font-style: italic;
   }
-  .description{
-    font-size: 1rem;
+  .description {
+    font-size: 1.3rem;
   }
 `;

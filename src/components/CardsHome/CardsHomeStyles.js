@@ -197,7 +197,7 @@ export const HomeSmallCard = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
-  height: 250px;
+  min-height: 250px;
   align-items: center;
   background-color: #f4e9d8;
   border-radius: 16px;

@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
       </ContainerIconFooter>
       <ContainerIconFooter>
-        <p>❝Tomate un setsu, pedite un sushi❞</p>
+        <p>"Tomate un setsu, pedite un sushi"</p>
       </ContainerIconFooter>
     </ContainerFooter>
   );

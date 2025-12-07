@@ -12,7 +12,7 @@ export const ContainerModalCart = styled.div`
   box-shadow: 15px 15px 50px 5px;
   position: absolute;
   top: 10vh;
-  right: ${(props) => (props.$activeCart ? "15px" : "-500px")};
+  right: ${(props) => (props.$activeCart ? "0px" : "-100vw")};
   z-index: +110;
   background-color: #1d3e32;
   transition: all 0.5s ease;
@@ -34,8 +34,7 @@ export const ContainerModalCart = styled.div`
   /* MEDIA QUERIES */
   @media (max-width: 768px) {
     /* tablets */
-    width: 300px;
-    height: 70vh;
+    width: 400px;
 
     h4 {
       font-size: 1.5rem;
@@ -49,8 +48,6 @@ export const ContainerModalCart = styled.div`
   @media (max-width: 480px) {
     /* móviles */
     width: 90%;
-    height: 60vh;
-    right: ${(props) => (props.$active ? "5%" : "-500px")};
 
     h4 {
       font-size: 1.2rem;
@@ -75,9 +72,10 @@ export const SectionModalCart = styled.div`
       border: none;
     }
   }
-
+  img {
+    width: 100% !important;
+  }
   i {
-    background-color: red;
     font-size: 2rem;
   }
 `;
@@ -230,7 +228,10 @@ export const TotalCart = styled.div`
   justify-content: space-around;
   align-items: center;
   border-top: 3px solid black;
-
+  font-weight: 800;
+  p {
+    font-size: 1.5rem;
+  }
   button {
     background-color: #bfa878;
     border: none;
@@ -238,7 +239,6 @@ export const TotalCart = styled.div`
     border-radius: 10px;
     font-weight: 800;
     cursor: pointer;
-
     &:hover {
       filter: brightness(0.8);
     }
@@ -251,7 +251,6 @@ export const TotalCart = styled.div`
   }
 
   @media (max-width: 480px) {
-    flex-direction: column;
     gap: 10px;
 
     button {

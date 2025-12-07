@@ -9,9 +9,6 @@ export const ContainerCardPieces = styled.div`
   align-items: center;
 
   /* 📱 Mobile */
-  @media (max-width: 900px) {
-    gap: 20px;
-  }
   @media (max-width: 600px) {
     gap: 20px;
   }
@@ -21,7 +18,7 @@ export const CardOrderPieces = styled.div`
   background-image: url("https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754258745/SETSUNAI/ChatGPT_Image_1_jul_2025_11_23_14_a.m._wqv2k3.png");
   background-size: auto;
   color: black;
-  width: 80%;
+  width: 60%;
   height: 80px !important;
   padding: 5px;
   display: flex;
@@ -85,8 +82,9 @@ export const CardOrderPieces = styled.div`
 
   /* 📱 TABLET */
   @media (max-width: 900px) {
-    width: 100%;
+    width: 80%;
     height: 100px !important;
+
     section h4 {
       font-size: 1.6rem;
     }
@@ -95,25 +93,39 @@ export const CardOrderPieces = styled.div`
     }
   }
 
-  /* 📱 MOBILE */
+  /* 📱 MOBILE (acá se unen section + buttons) */
   @media (max-width: 600px) {
-    height: 110px !important;
+    width: 95%;
+    height: auto !important;
+    padding: 10px;
+
+    /* 🔥 LA CLAVE: cambia la dirección del card */
+    flex-direction: column;
+    gap: 5px;
+
+    img {
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
     section {
-      width: 60%;
-      span {
-        width: 15%;
+      width: 100%;
+      order: 1;
+
+      h4 {
+        font-size: 1.3rem;
       }
     }
-    img {
-      width: 25%;
-    }
 
-    section h4 {
-      font-size: 1.3rem;
-    }
-
-    section p {
-      font-size: 0.9rem;
+    /* 🔥 Buttons se une debajo de section */
+    .buttons {
+      width: 100%;
+      order: 2;
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
     }
   }
 `;
@@ -130,7 +142,6 @@ export const ContainerCombinedPieces = styled(ContainerCardPieces)`
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding : 10px;
   }
 
   /* 📱 MOBILE */
@@ -152,6 +163,7 @@ export const CardCombinedPieces = styled(CardOrderPieces)`
   border-right: 5px solid #bfa878;
   background-color: rgb(191, 168, 120, 0.7);
   cursor: pointer;
+
   span {
     font-size: 1rem;
     position: absolute;

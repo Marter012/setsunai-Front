@@ -43,7 +43,7 @@ export const LinksContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-  padding-left: 0px;
+    padding-left: 0px;
     flex-direction: column;
     position: absolute;
     top: 100%; /* justo debajo del navbar */
@@ -55,6 +55,8 @@ export const LinksContainer = styled.div`
     max-height: ${(props) => (props.open ? "500px" : "0")};
     transition: max-height 0.5s ease;
     z-index: 200; /* encima de otros contenidos */
+    text-align: center;
+    font-weight: 800;
   }
 `;
 

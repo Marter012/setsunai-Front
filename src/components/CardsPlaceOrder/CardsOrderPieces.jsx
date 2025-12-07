@@ -53,7 +53,7 @@ const CardPiece = ({ piece }) => {
           </span>
         </div>
 
-        <p>{piece.description}</p>
+        <p className="description">{piece.description}</p>
       </section>
 
       <div className="buttons">

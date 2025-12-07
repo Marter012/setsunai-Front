@@ -5,6 +5,7 @@ export const ContainerOrderSent = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   font-family: "Cormorant Garamond", serif;
   align-items: center;
   gap: 10px;

@@ -11,15 +11,33 @@ export const ContainerFooter = styled.div`
   overflow: hidden;
   color: white;
   gap: 20px;
+
+  /* TABLETS */
+  @media (max-width: 768px) {
+    height: 90px;
+    gap: 10px;
+  }
+
+  /* MÓVILES */
+  @media (max-width: 480px) {
+    height: auto;
+    padding: 5px 0;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ContainerIconFooter = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   width: 50%;
   height: 80%;
   color: white;
+  
   svg {
     cursor: pointer;
     font-size: 2rem;
@@ -32,9 +50,11 @@ export const ContainerIconFooter = styled.div`
     padding: 10px;
     border-radius: 12px;
   }
+
   .whatsappIcon {
     background: #56dd88;
   }
+
   .instagramIcon {
     background: linear-gradient(
       45deg,
@@ -46,6 +66,7 @@ export const ContainerIconFooter = styled.div`
     );
   }
 
+  /* Contenedor de iconos */
   div {
     width: 50%;
     display: flex;
@@ -57,5 +78,40 @@ export const ContainerIconFooter = styled.div`
     font-size: 2rem;
     margin: 0;
     padding: 0;
+  }
+
+  /* TABLETS */
+  @media (max-width: 768px) {
+    svg {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    div {
+      width: 70%;
+    }
+  }
+
+  /* MÓVILES */
+  @media (max-width: 480px) {
+    svg {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    div {
+      width: 85%;
+    }
+
+    .backIcon {
+      padding: 6px;
+      border-radius: 10px;
+    }
   }
 `;
