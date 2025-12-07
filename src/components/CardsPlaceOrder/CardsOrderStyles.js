@@ -10,12 +10,10 @@ export const ContainerCardPieces = styled.div`
 
   /* 📱 Mobile */
   @media (max-width: 900px) {
-    background-color: red !important;
     gap: 20px;
   }
   @media (max-width: 600px) {
     gap: 20px;
-    background-color: blue !important;
   }
 `;
 
