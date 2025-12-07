@@ -1,64 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../../store/slice/cartSlice";
-import { CardOrderPieces, ContainerCardPieces } from "./CardsOrderStyles";
+import {
+  CardCombinedPieces,
+  ContainerCombinedPieces,
+} from "./CardsOrderStyles";
+import ModalCombinedPieces from "./ModalCombinedPieces/ModalCombinedPieces";
+import Overlay from "../ModalOverlay/ModalOverlay";
+import { closeOverlay, openOverlay } from "../../store/slice/overlaySlice";
+import {
+  closeModalCombined,
+  openModalCombined,
+} from "../../store/slice/combinedPiecesSlice";
 
 const CardOrderCombinedPieces = () => {
+  const [combinedSelected, setCombinedSelected] = useState(null);
+
   const dispatch = useDispatch();
 
-  const combinedState = useSelector((state) => state.combinedPieces);
-  const piecesCart = useSelector((state) => state.cart.items);
+  const combinedState = useSelector((state) => state.combinedPieces) || {};
+  const activeModal = useSelector((state) => state.combinedPieces.activeModal);
 
   const {
-    items: combinedItems,
+    items: combinedItems = [],
     loading: combinedLoading,
     error: combinedError,
   } = combinedState;
 
+  const handleCardClick = (item) => {
+    dispatch(openModalCombined()); // Abrir modal siempre
+    dispatch(openOverlay()); // Abrir overlay
+    setCombinedSelected(item); // Pasar item seleccionado al modal
+  };
   return (
-    <ContainerCardPieces>
+    <ContainerCombinedPieces>
+      <Overlay
+        onClose={() => {
+          dispatch(closeOverlay());
+          dispatch(closeModalCombined());
+        }}
+      />
+
+      {activeModal && (
+        <ModalCombinedPieces combinedSelected={combinedSelected} />
+      )}
+
       {combinedLoading && <p>Cargando combinados...</p>}
       {combinedError && <p>Error al cargar combinados: {combinedError}</p>}
 
       {!combinedLoading &&
         !combinedError &&
-        combinedItems.map((combinedPiece) => {
-          const cartItem = piecesCart.find(
-            (item) => item._id === combinedPiece._id
-          );
-
+        combinedItems?.map((combinedPiece) => {
+          let price =
+            combinedPiece.piecesData[0].price_4p +
+            combinedPiece.piecesData[1].price_4p +
+            combinedPiece.piecesData[2].price_4p;
           return (
-            <CardOrderPieces key={combinedPiece._id}>
-              <img src={combinedPiece.img} alt={combinedPiece.name} />
-              <section>
-                <h4>{combinedPiece.name}</h4>
-                <p>{combinedPiece.typePieces}</p>
-                {cartItem && cartItem.quantity > 0 ? (
-                  <div className="stylesButton">
-                    <button
-                      onClick={() => dispatch(removeItem(combinedPiece._id))}
-                    >
-                      -
-                    </button>
-                    <p>{cartItem.quantity}</p>
-                    <button onClick={() => dispatch(addItem(combinedPiece))}>
-                      +
-                    </button>
-                  </div>
-                ) : (
-                  <div className="stylesPrice">
-                    <p>${combinedPiece.price}</p>
-                    <button onClick={() => dispatch(addItem(combinedPiece))}>
-                    Agregar
-                  </button>
-                  </div>
+            <CardCombinedPieces
+              key={`${combinedPiece._id}`}
+              onClick={() => handleCardClick(combinedPiece)}
+              backImg={combinedPiece.img}
+            >
+              <section className="info">
+                <span>Desde ${price}</span>
 
-                )}
+                <p>{combinedPiece.description}</p>
+                <h4>{combinedPiece.name}</h4>
+                <p>
+                  Ingredientes Principales : <br />{" "}
+                  {combinedPiece.proteins.join(" ~ ")}
+                </p>
               </section>
-            </CardOrderPieces>
+            </CardCombinedPieces>
           );
         })}
-    </ContainerCardPieces>
+    </ContainerCombinedPieces>
   );
 };
 

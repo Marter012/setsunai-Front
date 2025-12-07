@@ -1,27 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { PrincipalContainer } from "../../Styles/GlobalStyles";
 import {
   PlaceOrderContainer,
   PlaceOrderCart,
   PlaceOrderPieces,
+  SelectButtonsMenu,
 } from "./PlaceOrderStyles";
 import CardOrderCombinedPieces from "../../components/CardsPlaceOrder/CardOrderCombinedPieces";
 import CardsOrderPieces from "../../components/CardsPlaceOrder/CardsOrderPieces";
 
 const PlaceOrder = () => {
-  
+  const [selectMenu, setSelectMenu] = useState(false);
+console.log(selectMenu);
   return (
     <PrincipalContainer>
       <PlaceOrderContainer>
-        <PlaceOrderPieces>
-          <p className="title">Que piezas te gustaria probar hoy?</p>
-          <CardsOrderPieces />
-        </PlaceOrderPieces>
+        <p>Que te gustaria probar hoy?</p>
 
-        <PlaceOrderCart>
-          <p className="title">Combinados listos </p>
-          <CardOrderCombinedPieces />
-        </PlaceOrderCart>
+        <SelectButtonsMenu>
+          <button
+            className={selectMenu === false ? "selected" : ""}
+            onClick={() => setSelectMenu(false)}
+          >
+            Piezas
+          </button>
+          <button
+            className={selectMenu === true ? "selected" : ""}
+            onClick={() => setSelectMenu(true)}
+          >
+            Combinados
+          </button>
+        </SelectButtonsMenu>
+
+        <PlaceOrderPieces>
+          {selectMenu === "" && (
+            <>
+              <CardsOrderPieces />
+              <CardOrderCombinedPieces />
+            </>
+          )}
+          {selectMenu === false && <CardsOrderPieces />}
+          {selectMenu === true && <CardOrderCombinedPieces />}
+        </PlaceOrderPieces>
       </PlaceOrderContainer>
     </PrincipalContainer>
   );

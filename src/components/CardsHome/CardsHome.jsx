@@ -1,104 +1,102 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  CardHome,
-  CardPromotion,
-  CardRecomendation,
-  ContainerCardsHome,
-  SectionCardsHome,
+  HomeSection,
+  HomeMainCard,
+  HomeBadgeRow,
+  HomeTitle,
+  HomeLead,
+  HomeInfoGrid,
+  HomeInfoCard,
+  HomeCTAGroup,
+  HomeRightColumn,
+  HomeSmallCardRow,
+  HomeSmallCard,
+  HomeNotes,
+  HomeDescriptionTitle,
+  HomeBtn,
 } from "./CardsHomeStyles";
+import ButtonAddItem from "../utils/Buttons/ButtonAddItem";
+import { useSelector } from "react-redux";
 
-const CardsHome = () => {
-  const [backgroundContainer, setbackgroundContainer] = useState("transparent");
-
+export default function CardsHome() {
+  const itemPromotion = useSelector((state) => state.pieces.items[0]);
+  const itemRecomendation = useSelector((state) => state.pieces.items[2]);
+  const CardsUnikey = [
+    { ...itemPromotion, title: "Promoción" },
+    { ...itemRecomendation, title: "Recomendación" },
+  ];
   return (
-    <ContainerCardsHome $backgroundContainer={backgroundContainer} $zIndex={1}>
-      <p className="SUSHI">SUSHI</p>
-      <SectionCardsHome
-        $stWidht="50vw"
-        $backgroundContainer={backgroundContainer}
-        onClick={() => setbackgroundContainer("transparent")}
-      >
-        <CardHome
-          onClick={(e) => {
-            e.stopPropagation();
-            setbackgroundContainer("#bfa878");
-          }}
-        >
-          <p className="Title">Veggis</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-          <p className="Text">
-            Arroz avinagrado con verduras frescas o encurtidas (como pepino,
-            palta, zanahoria), envuelto en alga u otras en finas láminas de
-            vegetales, con un sabor fresco y ligero.
-          </p>
-        </CardHome>
-        <CardHome
-          onClick={(e) => {
-            e.stopPropagation();
-            setbackgroundContainer("#1d3e32");
-          }}
-        >
-          <p className="Title">Tradicionales</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-          <p className="Text">
-            Arroz aderezado con vinagre, combinado con pescado fresco o
-            mariscos, envuelto en alga o tamago , todo con un sabor delicado y
-            equilibrado.
-          </p>
-        </CardHome>
-      </SectionCardsHome>
-      <CardRecomendation $backgroundContainer={backgroundContainer}>
-        <div className="Left">
-          <p className="Tipe">Recomendacion</p>
-          <p className="Title">Combo Boom</p>
-          <p className="NPieces">15p</p>
-          <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-        </div>
-        <div className="Right">
-          <p className="Tipe">Promocion </p>
-          <p className="Title">Combo Boom</p>
-          <p className="NPieces">15p</p>
-          <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-        </div>
-      </CardRecomendation>
-      <CardPromotion $backgroundContainer={backgroundContainer}>
-        <div className="Right">
-          <p className="Tipe">Recomendacion</p>
-          <p className="Title">Combo Boom</p>
-          <p className="NPieces">15p</p>
-          <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-        </div>
-        <div className="Left">
-          <p className="Tipe">Promocion </p>
-          <p className="Title">Combo Boom</p>
-          <p className="NPieces">15p</p>
-          <p className="Pieces">CaliFell,Futurama,Shripm, kapa maki</p>
-          <img
-            src="https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754402988/SETSUNAI/fondo_hwriq6.png"
-            alt=""
-          />
-        </div>
-      </CardPromotion>
-    </ContainerCardsHome>
-  );
-};
+    <HomeSection>
+      <HomeMainCard>
+        <HomeDescriptionTitle>
+          <HomeBadgeRow>
+            <span>Sushi casero • Tanti</span>
+          </HomeBadgeRow>
 
-export default CardsHome;
+          <HomeTitle>
+            {" "}
+            — Sabor artesanal — <br />
+            Sushi casero hecho a mano
+          </HomeTitle>
+          <HomeLead>
+            Trabajo únicamente por pedidos. Cada pieza se prepara con
+            ingredientes frescos y técnicas tanto simples como complejas, el
+            resultado es un sushi honesto y sabroso.
+          </HomeLead>
+
+          <HomeInfoGrid>
+            <HomeInfoCard>
+              <h4>Modalidad</h4>
+              <p>Solo por pedido</p>
+              <span>VIERNES || SÁBADOS || DOMINGOS.</span>
+            </HomeInfoCard>
+
+            <HomeInfoCard>
+              <h4>Ubicación</h4>
+              <p>Tanti, Córdoba</p>
+              <span>
+                Retiro y coordinación de delivery local al confirmar pedido.
+              </span>
+            </HomeInfoCard>
+          </HomeInfoGrid>
+
+          <HomeCTAGroup>
+            <HomeBtn href="/PlaceOrder">Hacer pedido</HomeBtn>
+            <HomeBtn href="/Pieces">Ver Piezas</HomeBtn>.
+          </HomeCTAGroup>
+        </HomeDescriptionTitle>
+
+        <HomeRightColumn>
+          <HomeSmallCardRow>
+            {CardsUnikey.map((item) => {
+              console.log(item);
+              return (
+                <HomeSmallCard>
+                  <img src={item.img} alt="combo" />
+                  <div className="divContainer">
+                    <span>{item.title}</span>
+                    <p>{item?.name}</p>
+                    <p>{item?.description}</p>
+                    <p className="price">${item?.price_8p}</p>
+                    <div>
+                      <ButtonAddItem item={{...item,finalPrice : item.price_8p}} />
+                    </div>
+                  </div>
+                </HomeSmallCard>
+              );
+            })}
+          </HomeSmallCardRow>
+
+          <HomeNotes>
+            <p>Notas importantes</p>
+            <ul>
+              <li>Pedidos con 24-48 hs de anticipación según temporada.</li>
+              <li>Elaboración artesanal en Tanti — sin producción en masa.</li>
+              <li>Opciones vegetarianas disponibles (consultar).</li>
+            </ul>
+          </HomeNotes>
+        </HomeRightColumn>
+      </HomeMainCard>
+    </HomeSection>
+  );
+}

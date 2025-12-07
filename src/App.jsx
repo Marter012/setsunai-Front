@@ -6,6 +6,7 @@ import Routes from "./routes/Routes";
 import { useEffect } from "react";
 import { fetchPieces } from "./store/slice/piecesSlice";
 import { fecthCombinedPieces } from "./store/slice/combinedPiecesSlice";
+import { fecthcomboVariants } from "./store/slice/comboVariantsSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchPieces());
     dispatch(fecthCombinedPieces());
+    dispatch(fecthcomboVariants());
   }, [dispatch]);
 
   return (

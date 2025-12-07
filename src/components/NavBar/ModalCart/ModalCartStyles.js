@@ -12,11 +12,11 @@ export const ContainerModalCart = styled.div`
   box-shadow: 15px 15px 50px 5px;
   position: absolute;
   top: 10vh;
-  right: ${(props) => (props.$active ? "15px" : "-500px")};
-  z-index: 99;
+  right: ${(props) => (props.$activeCart ? "15px" : "-500px")};
+  z-index: +110;
   background-color: #1d3e32;
   transition: all 0.5s ease;
-
+  position: fixed;
   h4 {
     width: 100%;
     font-size: 2rem;
@@ -32,7 +32,8 @@ export const ContainerModalCart = styled.div`
   }
 
   /* MEDIA QUERIES */
-  @media (max-width: 768px) { /* tablets */
+  @media (max-width: 768px) {
+    /* tablets */
     width: 300px;
     height: 70vh;
 
@@ -45,7 +46,8 @@ export const ContainerModalCart = styled.div`
     }
   }
 
-  @media (max-width: 480px) { /* móviles */
+  @media (max-width: 480px) {
+    /* móviles */
     width: 90%;
     height: 60vh;
     right: ${(props) => (props.$active ? "5%" : "-500px")};
@@ -67,7 +69,7 @@ export const SectionModalCart = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  overflow: hidden;
   div {
     h4 {
       border: none;
@@ -109,29 +111,50 @@ export const CardsCart = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
   text-align: center;
+  position: relative;
+  .empty-cart {
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    p {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
 `;
 
 export const CardCart = styled.div`
   width: 100%;
   min-height: 50px;
   max-height: 50px;
-  background-color: #bfa878;
   display: flex;
   overflow: hidden;
+  position: relative;
 
   img {
-    width: 15%;
+    width: 100%;
+    position: absolute;
     object-fit: cover;
+    opacity: 0.2;
   }
 
+  h4,
+  p,
+  div {
+    z-index: 1;
+    opacity: 1;
+  }
   h4 {
     font-size: 1.2rem;
     width: 40%;
   }
 
   p {
-    font-size: 1rem;
     width: 20%;
+
+    font-weight: 800;
   }
 
   div {
@@ -143,7 +166,8 @@ export const CardCart = styled.div`
     justify-content: space-around;
 
     button {
-      background-color: rgba(30, 61, 50, 0.5);
+      background-color: rgba(30, 61, 50);
+      color: #bfa878;
       width: 30%;
       height: 60%;
       border-radius: 20px;
@@ -151,6 +175,7 @@ export const CardCart = styled.div`
       font-size: 1.2rem;
       font-weight: 900;
       cursor: pointer;
+      padding: 0;
     }
 
     p {

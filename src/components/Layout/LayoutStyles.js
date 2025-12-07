@@ -6,7 +6,8 @@ export const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: start;
-
+  overflow: hidden !important;
+  
   .backgroundBody {
     width: 200px;
     display: flex;

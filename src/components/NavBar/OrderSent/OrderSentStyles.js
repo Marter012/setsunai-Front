@@ -1,32 +1,27 @@
 import styled from "styled-components";
 
 export const ContainerOrderSent = styled.form`
-  width: 60%;
-  max-height: 80vh;
-  margin: 40px auto;
-  padding: 30px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background-color: #f4e9d8;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
 
   h4 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #1d3e32;
+    margin-top: 15px;
+    font-size: 1.6rem;
   }
 
   input {
-    padding: 12px 15px;
+    width: 80%;
+    height: 30px;
     font-size: 1.2rem;
+    text-align: center;
     border-radius: 10px;
     border: 2px solid #bfa878;
-    outline: none;
-
     &.error {
       border-color: red;
     }
@@ -111,7 +106,8 @@ export const ContainerOrderSent = styled.form`
       font-size: 1rem;
     }
 
-    p, .payment-options {
+    p,
+    .payment-options {
       font-size: 1rem;
     }
 

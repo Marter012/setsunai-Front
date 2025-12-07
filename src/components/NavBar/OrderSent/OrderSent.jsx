@@ -6,16 +6,17 @@ import {
   clearCart,
   toggleCart,
 } from "../../../store/slice/cartSlice";
+import { toggleOverlay } from "../../../store/slice/overlaySlice";
 
 const OrderSent = () => {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState({ name: false, paymentMethod: false });
 
   const [paymentMethod, setPaymentMethod] = useState("");
-  const disptach = useDispatch();
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.finalPrice * item.quantity,
     0
   );
 
@@ -41,15 +42,15 @@ const OrderSent = () => {
       alert("Completa todos los campos");
       return;
     }
-    const phone = "543516478584";
+    const phone = "543541544418";
 
-    const msg = `*📦 Pedido confirmado!*
+    const msg = `*📦 Orden de pedido!*
 👤 Nombre: *${name}*
 💳 Método de pago: *${paymentMethod}*
 
 🧾 *Detalle del pedido:*
 ${cartItems
-  .map((item) => `- ${item.quantity} x *${item.name}* — $${item.price}`)
+  .map((item) => `- ${item.quantity} x *${item.name}* ${item.totalPieces} piezas — $${item.finalPrice}`)
   .join("\n")}
 
 💰 *Total:* $${total}
@@ -64,9 +65,10 @@ ${cartItems
     window.open(url, "_blank", "noopener");
     setName("");
     setPaymentMethod("");
-    disptach(clearCart());
-    disptach(toggleCart());
-    disptach(activeOrder());
+    dispatch(clearCart());
+    dispatch(toggleCart());
+    dispatch(toggleOverlay())
+    dispatch(activeOrder());
   };
 
   return (
@@ -118,8 +120,8 @@ ${cartItems
 
       <p>
         Una vez que confirmes tu pedido, te enviaremos la información necesaria
-        para completar tu pago y preparar tu comida. ¡Estamos ansiosos por que
-        la disfrutes!
+        para completar tu pago y preparar tu comida. <br />
+        ¡Estamos ansiosos para que la disfrutes!
       </p>
 
       <button type="submit">Confirmar mi pedido ✅</button>

@@ -4,49 +4,65 @@ export const PiecesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Night in Tokyo", sans-serif;
   overflow: hidden;
   width: 100%;
-
-  p {
+  padding: 50px 20px;
+  p{
     font-size: 3rem;
-    margin-bottom: 0;
-    font-weight: bold;
-
-    @media (max-width: 1024px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-      text-align: center;
-    }
+    font-weight: 800;
+  }
+  p,h3{
+    margin: 0;
+    padding: 0;
   }
 `;
 
 export const CardsContainerPieces = styled.div`
   width: 80%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 60px;
-  padding: 30px;
-  margin: 30px;
-  background-color: rgba(29, 62, 50, 0.9);
-  border-radius: 50px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px; /* separación entre categorías */
 
-  @media (max-width: 1024px) {
-    width: 90%;
-    gap: 40px;
-    padding: 20px;
-    margin: 20px;
+  .categoryBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 40px;
+    /* Fondo semitransparente distinto según categoría usando nth-child */
+    &:nth-child(1) {
+      background-color: rgba(29, 62, 50, 0.85); /* verde oscuro */
+    }
+    &:nth-child(2) {
+      background-color: rgba(62, 29, 50, 0.85); /* púrpura oscuro */
+    }
+    &:nth-child(3) {
+      background-color: rgba(50, 50, 62, 0.85); /* azul oscuro */
+    }
+    &:nth-child(4) {
+      background-color: rgba(62, 50, 29, 0.85); /* marrón oscuro */
+    }
   }
 
-  @media (max-width: 480px) {
-    width: 95%;
-    gap: 20px;
-    padding: 10px;
-    margin: 10px;
+  h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #f4e9d8;
+    font-size: 3rem;
+    text-shadow: 
+      -1px -1px 0 #bfa878,  
+       1px -1px 0 #bfa878,
+      -1px  1px 0 #bfa878,
+       1px  1px 0 #bfa878;
+  }
+
+  .cardsCategory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* espacio entre cards */
+    justify-content: center;
   }
 `;
 
@@ -60,57 +76,34 @@ export const CardPieces = styled.div`
   justify-content: space-evenly;
   text-align: center;
   border: 5px solid #bfa878;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {
     transform: scale(1.05);
-  }
-
-  p,
-  h4 {
-    margin: 0;
-    padding: 0;
-  }
-
-  p {
-    font-size: 1rem;
-    font-family: "Cormorant Garamond", serif;
-
-    @media (max-width: 1024px) {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.8rem;
-    }
-  }
-
-  h4 {
-    font-weight: 800;
-    font-size: 1.5rem;
-
-    @media (max-width: 1024px) {
-      font-size: 1.3rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.1rem;
-    }
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
   }
 
   img {
     width: 90%;
     height: 50%;
     object-fit: cover;
+    border-radius: 5px;
+  }
 
-    @media (max-width: 1024px) {
-      height: 45%;
-    }
-
-    @media (max-width: 480px) {
-      height: 40%;
-    }
+  p, h4 {
+    margin: 0;
+    padding: 0;
+  }
+h4{
+  font-size: 2rem;
+}
+  .protein {
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+  .description{
+    font-size: 1rem;
   }
 `;

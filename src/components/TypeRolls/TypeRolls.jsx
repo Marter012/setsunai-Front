@@ -8,7 +8,7 @@ import {
 const TypeRolls = () => {
   return (
     <ContainerTypeRolls>
-      <p className="Title">Tipos de Rolls</p>
+      <p className="Title">Rolls en Setsu</p>
 
       <ContainerTypeRoll>
         <CardTypeRoll>
@@ -18,8 +18,12 @@ const TypeRolls = () => {
           />
           <p className="TypeRoll">Maki</p>
           <p className="DescriptionRoll">
-            Sushi enrollado en alga nori por fuera, con arroz y relleno adentro.
-            Generalmente los rollos son más pequeños y simples.
+            Sushi enrollado en alga nori por fuera, con un centro de arroz y un
+            único ingrediente como protagonista.
+            <br />
+            <br />
+            Suelen ser piezas pequeñas, delicadas y tradicionales, pensadas para
+            destacar el sabor puro de su relleno.
           </p>
         </CardTypeRoll>
         <CardTypeRoll>
@@ -29,9 +33,11 @@ const TypeRolls = () => {
           />
           <p className="TypeRoll">Uramaki</p>
           <p className="DescriptionRoll">
-            Es un sushi donde el arroz queda por fuera y el alga nori por
-            dentro, envolviendo el relleno. Suelen ser un poco más grandes y
-            vistosos, muchas veces con salsas o semillas por fuera.
+            Sushi invertido donde el arroz envuelve al alga nori y al relleno.
+            <br />
+            <br />
+            Se destacan por su tamaño y presentación, con toppings, salsas o
+            semillas por fuera que aportan textura y sabor.
           </p>
         </CardTypeRoll>
         <CardTypeRoll>
@@ -41,10 +47,17 @@ const TypeRolls = () => {
           />
           <p className="TypeRoll">Tamago</p>
           <p className="DescriptionRoll">
-            Sushi de huevo, generalmente dulce, que se cocina en una sartén
-            especial y se enrolla en el sushi. Su textura es suave y su sabor es
-            delicado. <br /> Debate al llamarlo "sushi" ya que no suele contener
-            arroz ni alga nori.
+            Delicado roll envuelto en una lámina de tamago —el tradicional
+            omelette japonés— que realza un relleno fresco y cremoso en su
+            interior. 
+            <br />
+            <br />
+            Su textura es suave y su sabor es delicado. <br />{" "}
+            <span>
+              {" "}
+              Debate al llamarlo "sushi" ya que no suele contener arroz ni alga
+              nori.
+            </span>
           </p>
         </CardTypeRoll>
       </ContainerTypeRoll>

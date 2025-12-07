@@ -17,8 +17,19 @@ const combinedPiecesSlice = createSlice({
     items: [],
     loading: false,
     error: null,
+    activeModal: false,
   },
-  reducers: {},
+  reducers: {
+    openModalCombined: (state) => {
+      state.activeModal = true;
+    },
+    closeModalCombined: (state) => {
+      state.activeModal = false;
+    },
+    toggleModalCombined: (state) => {
+      state.activeModal = !state.activeModal;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fecthCombinedPieces.pending, (state) => {
@@ -35,5 +46,8 @@ const combinedPiecesSlice = createSlice({
       });
   },
 });
+
+export const { openModalCombined, closeModalCombined, toggleModalCombined } =
+  combinedPiecesSlice.actions;
 
 export default combinedPiecesSlice.reducer;

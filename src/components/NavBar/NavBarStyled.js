@@ -7,7 +7,7 @@ export const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  position: fixed;
   z-index: 100;
 `;
 
@@ -39,7 +39,7 @@ export const LinksContainer = styled.div`
   a {
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.4em;
   }
 
   @media (max-width: 768px) {

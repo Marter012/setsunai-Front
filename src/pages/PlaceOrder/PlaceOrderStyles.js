@@ -2,40 +2,56 @@ import styled from "styled-components";
 
 export const PlaceOrderContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    align-items: center;
+  p {
+    font-size: 3rem;
+    margin: 20px;
+    font-weight : 800;
+  }
+`;
+
+export const SelectButtonsMenu = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+
+  button {
+    width: 100%;
+    background-color: rgba(30, 61, 50, 0.3);
+    padding: 10px 15px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+
+  button:hover {
+    background-color: rgba(30, 61, 50, 0.7);
+  }
+
+  .selected {
+    background-color: rgba(30, 61, 50, 0.7);
+    color: white;
   }
 `;
 
 export const PlaceOrderPieces = styled.div`
-  width: 60%;
-  height: 85vh;
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column; /* apila verticalmente CardsOrderPieces y Combined */
+  gap: 12px;
   text-align: center;
-
-  p {
-    font-size: 2.5rem;
-    margin: 0;
-    margin-bottom: 10px;
-
-    @media (max-width: 1024px) {
-      font-size: 2rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-    }
-  }
-
+  align-items: center;
   @media (max-width: 1024px) {
     width: 90%;
-    height: auto;
+    min-height: auto;
     margin-bottom: 30px;
   }
 
@@ -51,13 +67,11 @@ export const PlaceOrderCart = styled.div`
 
   p {
     font-size: 2.5rem;
-    margin: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 
     @media (max-width: 1024px) {
       font-size: 2rem;
     }
-
     @media (max-width: 480px) {
       font-size: 1.5rem;
     }

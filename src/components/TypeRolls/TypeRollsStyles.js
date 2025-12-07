@@ -1,102 +1,74 @@
 import styled from "styled-components";
 
 export const ContainerTypeRolls = styled.div`
-  width: 100%;
-  min-height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+  align-items: center;
+  width: 100%;
+  font-family: "Night in Tokyo", sans-serif;
+  padding: 50px 20px;
+  background-color: #f4e9d8; /* fondo claro */
+  color: #1d3e32;
 
   .Title {
-    height: 15vh;
-    margin: 0;
-    background-image: url("https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754258745/SETSUNAI/ChatGPT_Image_1_jul_2025_11_23_14_a.m._wqv2k3.png");
     font-size: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      height: 12vh;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-      height: 10vh;
-    }
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 `;
 
 export const ContainerTypeRoll = styled.div`
-  width: 100%;
-  height: 80%;
   display: flex;
-  justify-content: space-around;
-  overflow: hidden;
-
-  @media (max-width: 1024px) {
-    flex-wrap: wrap;
-    height: auto;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const CardTypeRoll = styled.div`
-  width: 30%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-image: url("https://res.cloudinary.com/dsgcmsjv4/image/upload/v1754258745/SETSUNAI/ChatGPT_Image_1_jul_2025_11_23_14_a.m._wqv2k3.png");
-  border-bottom-right-radius: 50px;
-  padding: 10px;
+  background-color: #1d3e32; /* card verde oscuro */
+  color: #f4e9d8; /* texto claro */
+  width: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
 
-  p {
-    margin: 0;
+  &:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
   }
 
   .TypeRoll {
-    font-size: 2.5rem;
-    margin-top: 10px;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 15px 0 10px;
+    text-transform: uppercase;
   }
 
   .DescriptionRoll {
-    font-size: 1.2rem;
-    margin-top: 5px;
-  }
+    font-size: 1.3rem;
+    font-family: "Cormorant Garamond", serif;
+    padding: 0 15px 20px;
+    line-height: 1.5;
+    color: #f4e9d8;
 
-  @media (max-width: 1024px) {
-    width: 45%;
-    height: auto;
-
-    .TypeRoll {
-      font-size: 2rem;
-    }
-
-    .DescriptionRoll {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    width: 90%;
-    height: auto;
-
-    .TypeRoll {
-      font-size: 1.5rem;
-    }
-
-    .DescriptionRoll {
-      font-size: 0.9rem;
+    span {
+      font-style: italic;
+      font-size: 0.85rem;
+      display: block;
+      margin-top: 10px;
+      color: #c1d9c6; /* un verde más claro para subtexto */
     }
   }
 `;
