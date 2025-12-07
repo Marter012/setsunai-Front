@@ -50,7 +50,7 @@ const OrderSent = () => {
 
 🧾 *Detalle del pedido:*
 ${cartItems
-  .map((item) => `- ${item.quantity} x *${item.name}* ${item.totalPieces} piezas — $${item.finalPrice}`)
+  .map((item) => `- ${item.quantity} x *${item.name}* ${item.selectedSize} piezas — $${item.finalPrice}`)
   .join("\n")}
 
 💰 *Total:* $${total}
