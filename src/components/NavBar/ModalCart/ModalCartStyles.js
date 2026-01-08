@@ -149,7 +149,6 @@ export const CardCart = styled.div`
   display: flex;
   overflow: hidden;
   position: relative;
-
   img {
     width: 100%;
     position: absolute;
@@ -202,6 +201,9 @@ export const CardCart = styled.div`
   }
 
   @media (max-width: 900px) {
+     .dataProduct {
+      width: 45%;
+     }
     p{
       font-size: 1.5rem;
     }

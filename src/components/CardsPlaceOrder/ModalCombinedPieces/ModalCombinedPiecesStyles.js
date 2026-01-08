@@ -20,7 +20,7 @@ export const ModalContainerCP = styled(motion.div)`
 
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;  
+  gap: 12px;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
@@ -28,7 +28,7 @@ export const ModalContainerCP = styled(motion.div)`
   background-size: cover;
   background-position: center;
   border: 2px solid #f4e9d8;
-  
+
   h2 {
     color: rgb(232, 209, 170);
     font-size: 3rem;
@@ -41,6 +41,8 @@ export const ModalContainerCP = styled(motion.div)`
   }
 
   @media (max-width: 600px) {
+    min-height: 70vh;
+    max-height: 70vh;
     h2 {
       font-size: 2.2rem;
     }
@@ -58,7 +60,7 @@ export const ModalCardCombinedPieces = styled.div`
   flex-shrink: 0;
   flex-direction: column;
   gap: 12px;
-  
+
   background-color: rgb(232, 209, 170);
   border-radius: 14px;
   p,
@@ -209,7 +211,9 @@ export const SectionButton = styled.div`
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: stretch;
-    .dataOrder,.sectionAdds,.selectedOptions {
+    .dataOrder,
+    .sectionAdds,
+    .selectedOptions {
       width: 100%;
       justify-content: space-between;
     }
