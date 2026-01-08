@@ -9,8 +9,8 @@ const Routes = () => {
   return (
     <ReactDomRoutes>      
       <Route path='/' element={<Home/>}/>
-      <Route path='/Pieces' element={<Pieces/>}/>
-      <Route path='/PlaceOrder' element={<PlaceOrder/>}/>
+      <Route path='/pieces' element={<Pieces/>}/>
+      <Route path='/placeOrder' element={<PlaceOrder/>}/>
     </ReactDomRoutes>
   )
 }
