@@ -20,80 +20,75 @@ const OrderSent = () => {
     0
   );
 
-const formatSelections = (selections) => {
-  if (!selections) return "";
+  const formatSelections = (selections) => {
+    if (!selections) return "";
 
-  const SALSAS_LABELS = {
-    soja: "Salsa de Soja",
-    teriyaki: "Salsa Teriyaki",
-    buenosAires: "Salsa Buenos Aires",
-  };
+    const SALSAS_LABELS = {
+      soja: "Salsa de Soja",
+      teriyaki: "Salsa Teriyaki",
+      buenosAires: "Salsa Buenos Aires",
+    };
 
-  const EXTRAS_LABELS = {
-    palitos: "Palitos",
-    wasabi: "Wasabi",
-    jengibreEncurtido: "Jengibre Encurtido",
-  };
+    const EXTRAS_LABELS = {
+      palitos: "Palitos",
+      wasabi: "Wasabi",
+      jengibreEncurtido: "Jengibre Encurtido",
+    };
 
-  const include = selections.include || {};
+    const include = selections.include || {};
 
-  const salsaText = include.salsa
-    ? `Salsa:\n- ${SALSAS_LABELS[include.salsa]}`
-    : "";
-
-  const incluyeText = Object.entries(include)
-    .filter(([key, value]) => value === true && key !== "salsa")
-    .map(([key]) => `- ${EXTRAS_LABELS[key]}`)
-    .join("\n");
-
-  const incluyeBlock = incluyeText
-    ? `Incluye:\n${incluyeText}`
-    : "";
-
-  const extrasBlock =
-    selections.extras?.length > 0
-      ? `Extras:\n${selections.extras
-          .map((item) => `- ${item.name}`)
-          .join("\n")}`
+    const salsaText = include.salsa
+      ? `Salsa:\n- ${SALSAS_LABELS[include.salsa]}`
       : "";
 
-  const bebidasBlock =
-    selections.drinks?.length > 0
-      ? `Bebidas:\n${selections.drinks
-          .map((item) => `- ${item.name}`)
-          .join("\n")}`
-      : "";
+    const incluyeText = Object.entries(include)
+      .filter(([key, value]) => value === true && key !== "salsa")
+      .map(([key]) => `- ${EXTRAS_LABELS[key]}`)
+      .join("\n");
 
-  return [salsaText, incluyeBlock, extrasBlock, bebidasBlock]
-    .filter(Boolean)
-    .join("\n");
-};
+    const incluyeBlock = incluyeText ? `Incluye:\n${incluyeText}` : "";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let hasError = false;
-    const newErrors = { name: false, paymentMethod: false };
+    const extrasBlock =
+      selections.extras?.length > 0
+        ? `Extras:\n${selections.extras
+            .map((item) => `- ${item.name}`)
+            .join("\n")}`
+        : "";
 
-    if (!name.trim()) {
-      newErrors.name = true;
-      hasError = true;
-    }
+    const bebidasBlock =
+      selections.drinks?.length > 0
+        ? `Bebidas:\n${selections.drinks
+            .map((item) => `- ${item.name}`)
+            .join("\n")}`
+        : "";
 
-    if (!paymentMethod) {
-      newErrors.paymentMethod = true;
-      hasError = true;
-    }
+    return [salsaText, incluyeBlock, extrasBlock, bebidasBlock]
+      .filter(Boolean)
+      .join("\n");
+  };
 
-    setErrors(newErrors);
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (hasError) return;
-    if (!name || !paymentMethod) {
-      alert("Completa todos los campos");
-      return;
-    }
-    const phone = "543541544418";
+  let hasError = false;
+  const newErrors = { name: false, paymentMethod: false };
 
-    const msg = `*📦 Orden de pedido!*
+  if (!name.trim()) {
+    newErrors.name = true;
+    hasError = true;
+  }
+
+  if (!paymentMethod) {
+    newErrors.paymentMethod = true;
+    hasError = true;
+  }
+
+  setErrors(newErrors);
+  if (hasError) return;
+
+  const phone = "543541544418"; // SIN +, sin espacios
+
+  const msg = `*📦 Orden de pedido!*
 👤 Nombre: *${name}*
 💳 Método de pago: *${paymentMethod}*
 
@@ -112,19 +107,25 @@ ${formatSelections(item.selections)}`
 
 🙏 ¡Gracias por tu compra!`;
 
-    const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-    const baseUrl = isMobile
-      ? "https://wa.me"
-      : "https://web.whatsapp.com/send";
-    const url = `${baseUrl}?phone=${phone}&text=${encodeURIComponent(msg)}`;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+  if (isMobile) {
+    // 📱 Mobile → abre la app directo (clave para Android)
+    window.location.href = url;
+  } else {
+    // 💻 Desktop → WhatsApp Web
     window.open(url, "_blank", "noopener");
-    setName("");
-    setPaymentMethod("");
-    dispatch(clearCart());
-    dispatch(toggleCart());
-    dispatch(toggleOverlay());
-    dispatch(activeOrder());
-  };
+  }
+
+  setName("");
+  setPaymentMethod("");
+  dispatch(clearCart());
+  dispatch(toggleCart());
+  dispatch(toggleOverlay());
+  dispatch(activeOrder());
+};
+
 
   return (
     <ContainerOrderSent as="form" onSubmit={handleSubmit}>
