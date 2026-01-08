@@ -13,10 +13,10 @@ const cartSlice = createSlice({
     toggleCart: (state) => {
       state.active = !state.active;
     },
-     openCart: (state) => {
+    openCart: (state) => {
       state.active = true;
     },
-     closeCart: (state) => {
+    closeCart: (state) => {
       state.active = false;
     },
 
@@ -27,12 +27,15 @@ const cartSlice = createSlice({
     // payload esperado:
     // { item: { code, name, img, price, uniqueKey?, variant? } }
     addItem: (state, action) => {
+      
       const item = action.payload.item;
       const existing = state.items.find(
         (productCart) =>
+          
           productCart.code === item.code &&
           productCart._id === item._id &&
-          productCart.selectedSize === item.selectedSize
+          productCart.selectedSize === item.selectedSize &&
+          JSON.stringify(productCart.selections) === JSON.stringify(item.selections)
       );
 
       if (existing) {
@@ -52,7 +55,8 @@ const cartSlice = createSlice({
         (productCart) =>
           productCart.code === item.code &&
           productCart._id === item._id &&
-          productCart.selectedSize === item.selectedSize
+          productCart.selectedSize === item.selectedSize &&
+          JSON.stringify(productCart.selections) === JSON.stringify(item.selections)
       );
       if (!existing) return;
 
@@ -64,7 +68,8 @@ const cartSlice = createSlice({
             !(
               productCart.code === item.code &&
               productCart._id === item._id &&
-              productCart.selectedSize === item.selectedSize
+              productCart.selectedSize === item.selectedSize &&
+              JSON.stringify(productCart.selections) === JSON.stringify(item.selections)
             )
         );
       }
@@ -76,7 +81,14 @@ const cartSlice = createSlice({
   },
 });
 
-export const { toggleCart,openCart,closeCart, addItem, removeItem, clearCart, activeOrder } =
-  cartSlice.actions;
+export const {
+  toggleCart,
+  openCart,
+  closeCart,
+  addItem,
+  removeItem,
+  clearCart,
+  activeOrder,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

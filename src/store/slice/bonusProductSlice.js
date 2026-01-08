@@ -1,18 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fecthcomboVariants = createAsyncThunk(
-  "combinedPieces/fecthcomboVariants",
+export const fetchBonusProducts = createAsyncThunk(
+  "bonusProduct/fetchBonusProducts",
   async () => {
     const res = await axios.get(
-      "https://decent-aurora-setsunai-cc7a0add.koyeb.app/authCombinedPieces/comboVariants"
+      "https://decent-aurora-setsunai-cc7a0add.koyeb.app/authBonusProduct/bonusProduct"
     );
+    console.log(res.data)
     return res.data;
   }
 );
 
-const comboVariantsSlice = createSlice({
-  name: "comboVariants",
+const bonusProductSlice = createSlice({
+  name: "bonusProduct",
   initialState: {
     items: [],
     loading: false,
@@ -21,19 +22,19 @@ const comboVariantsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fecthcomboVariants.pending, (state) => {
+      .addCase(fetchBonusProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fecthcomboVariants.fulfilled, (state, action) => {
+      .addCase(fetchBonusProducts.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loading = false;
       })
-      .addCase(fecthcomboVariants.rejected, (state, action) => {
+      .addCase(fetchBonusProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default comboVariantsSlice.reducer;
+export default bonusProductSlice.reducer;

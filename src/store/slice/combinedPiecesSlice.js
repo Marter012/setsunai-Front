@@ -5,7 +5,7 @@ export const fecthCombinedPieces = createAsyncThunk(
   "combinedPieces/fetchCombinedPieces",
   async () => {
     const res = await axios.get(
-      "https://setsunai-api.onrender.com/authCombinedPieces/combinedPieces"
+      "https://decent-aurora-setsunai-cc7a0add.koyeb.app/authCombinedPieces/combinedPieces"
     );
     return res.data;
   }
@@ -37,7 +37,7 @@ const combinedPiecesSlice = createSlice({
         state.error = null;
       })
       .addCase(fecthCombinedPieces.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = action.payload.filter((item)=>item.state === true);
         state.loading = false;
       })
       .addCase(fecthCombinedPieces.rejected, (state, action) => {

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchPieces } from "./store/slice/piecesSlice";
 import { fecthCombinedPieces } from "./store/slice/combinedPiecesSlice";
 import { fecthcomboVariants } from "./store/slice/comboVariantsSlice";
+import { fetchBonusProducts } from "./store/slice/bonusProductSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function App() {
     dispatch(fetchPieces());
     dispatch(fecthCombinedPieces());
     dispatch(fecthcomboVariants());
+    dispatch(fetchBonusProducts());
   }, [dispatch]);
 
   return (

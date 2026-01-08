@@ -6,8 +6,8 @@ import {
   PlaceOrderPieces,
   SelectButtonsMenu,
 } from "./PlaceOrderStyles";
-import CardOrderCombinedPieces from "../../components/CardsPlaceOrder/CardOrderCombinedPieces";
 import CardsOrderPieces from "../../components/CardsPlaceOrder/CardsOrderPieces";
+import CardsOrderCombinedPieces from "../../components/CardsPlaceOrder/CardsOrderCombinedPieces";
 
 const PlaceOrder = () => {
   const [selectMenu, setSelectMenu] = useState(false);
@@ -36,11 +36,11 @@ console.log(selectMenu);
           {selectMenu === "" && (
             <>
               <CardsOrderPieces />
-              <CardOrderCombinedPieces />
+              <CardsOrderCombinedPieces/>
             </>
           )}
           {selectMenu === false && <CardsOrderPieces />}
-          {selectMenu === true && <CardOrderCombinedPieces />}
+          {selectMenu === true && <CardsOrderCombinedPieces />}
         </PlaceOrderPieces>
       </PlaceOrderContainer>
     </PrincipalContainer>

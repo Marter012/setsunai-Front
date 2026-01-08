@@ -71,7 +71,7 @@ export const SectionModalCart = styled.div`
   }
   svg {
     position: absolute;
-    font-size: 3rem;
+    font-size: 2.3rem;
     top: 10%;
   }
   img {
@@ -103,7 +103,7 @@ export const CartDeleteIcon = styled(MdDeleteSweep)`
 
 export const CartCloseIcon = styled(IoMdCloseCircle)`
   right: 15px;
-   color: rgb(191, 168, 120);
+  color: rgb(191, 168, 120);
   position: absolute;
   top: 15px;
   cursor: pointer;
@@ -146,7 +146,6 @@ export const CardsCart = styled.div`
 export const CardCart = styled.div`
   width: 100%;
   min-height: 50px;
-  max-height: 50px;
   display: flex;
   overflow: hidden;
   position: relative;
@@ -174,29 +173,18 @@ export const CardCart = styled.div`
     font-weight: 800;
   }
 
-  div {
-    width: 25%;
-    min-height: 10%;
+  .dataProduct {
+    width: 55%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-
-    button {
-      background-color: rgba(30, 61, 50);
-      color: #bfa878;
-      width: 30%;
-      height: 60%;
-      border-radius: 20px;
-      border: none;
+    flex-direction: column;
+    h4 {
       font-size: 1.2rem;
-      font-weight: 900;
-      cursor: pointer;
-      padding: 0;
     }
-
     p {
-      font-size: 1.7rem;
+      width: 100%;
+      text-align: start;
+      justify-content: start;
+      font-size: 0.8rem;
     }
   }
 
@@ -213,28 +201,9 @@ export const CardCart = styled.div`
     justify-content: center;
   }
 
-  @media (max-width: 480px) {
-    img {
-      width: 20%;
-    }
-
-    h4 {
-      font-size: 1rem;
-      width: 35%;
-    }
-
-    p {
-      font-size: 0.8rem;
-      width: 15%;
-    }
-
-    div button {
-      width: 25%;
-      font-size: 1rem;
-    }
-
-    div p {
-      font-size: 1.2rem;
+  @media (max-width: 900px) {
+    p{
+      font-size: 1.5rem;
     }
   }
 `;

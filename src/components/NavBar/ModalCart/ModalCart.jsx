@@ -11,14 +11,19 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   activeOrder,
-  addItem,
   clearCart,
   closeCart,
-  removeItem,
 } from "../../../store/slice/cartSlice";
 import OrderSent from "../OrderSent/OrderSent";
 import Overlay from "../../ModalOverlay/ModalOverlay";
 import { closeOverlay } from "../../../store/slice/overlaySlice";
+import ButtonAddItem from "../../utils/Buttons/ButtonAddItem";
+
+const SALSAS_LABELS = {
+  soja: "Salsa de Soja",
+  teriyaki: "Salsa Teriyaki",
+  buenosAires: "Salsa Buenos Aires",
+};
 
 const ModalCart = ({ iconRef }) => {
   const itemsCart = useSelector((state) => state.cart.items);
@@ -42,10 +47,7 @@ const ModalCart = ({ iconRef }) => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [activeCart, dispatch, iconRef]);
 
   return (
@@ -58,7 +60,7 @@ const ModalCart = ({ iconRef }) => {
           ) : (
             <>
               <div className="title">
-                <h4>Vas a pedir</h4>
+                <h4>Tu orden</h4>
                 <CartDeleteIcon onClick={() => dispatch(clearCart())} />
                 <CartCloseIcon
                   onClick={() => {
@@ -67,32 +69,62 @@ const ModalCart = ({ iconRef }) => {
                   }}
                 />
               </div>
+
               <CardsCart>
                 {itemsCart.length === 0 ? (
                   <p className="empty-cart">
-                    <p>Carrito Vacio.</p>
-                    <p>Elije tus piezas o combinados favoritos.</p>
+                    <p>Carrito vacío.</p>
+                    <p>Elegí tus piezas o combinados favoritos.</p>
                   </p>
                 ) : (
-                  itemsCart.map((item) => (
-                    <CardCart key={item._id}>
-                      <div>
-                        <button onClick={() => dispatch(removeItem({ item }))}>
-                          -
-                        </button>
-                        <p>{item.quantity}</p>
-                        <button onClick={() => dispatch(addItem({ item }))}>
-                          +
-                        </button>
-                      </div>
-                      <img src={item.img} alt="" />
-                      <h4>{item.name} </h4>
-                      <p>{item.selectedSize}p</p>
-                      <p>${item.finalPrice * item.quantity}</p>
-                    </CardCart>
-                  ))
+                  itemsCart.map((item) => {
+                    const selections = item.selections || {};
+                    const include = selections.include || {};
+                    
+                    const includeLabels = [];
+                    
+                    if (include.palitos) includeLabels.push("Palitos");
+                    if (include.wasabi) includeLabels.push("Wasabi");
+                    if (include.jengibreEncurtido)
+                      includeLabels.push("Jengibre");
+                    
+                    const includeText = includeLabels.join(" || ");
+                    
+                    const salsaText =
+                      include.salsa && SALSAS_LABELS[include.salsa];
+
+                    const extrasText = selections.extras
+                      ?.map((e) => e.name)
+                      .join(" || ");
+
+                    const drinksText = selections.drinks
+                      ?.map((d) => d.name)
+                      .join(" || ");
+
+                    return (
+                      <CardCart key={item._id}>
+                        <img src={item.img} alt="" />
+
+                        <ButtonAddItem item={item} />
+
+                        <section className="dataProduct">
+                          <h4>
+                            {item.name?.split(" ").slice(0, 3).join(" ")} (
+                            {item.selectedSize}p)
+                          </h4>
+                          {includeText && <p>Incluye: {includeText}</p>}
+                          {salsaText && <p>Salsa: {salsaText}</p>}
+                          {extrasText && <p>Extras: {extrasText}</p>}
+                          {drinksText && <p>Bebidas: {drinksText}</p>}
+                        </section>
+
+                        <p>${item.finalPrice * item.quantity}</p>
+                      </CardCart>
+                    );
+                  })
                 )}
               </CardsCart>
+
               <TotalCart $itemsCart={itemsCart.length}>
                 <p>Total</p>
                 <p>

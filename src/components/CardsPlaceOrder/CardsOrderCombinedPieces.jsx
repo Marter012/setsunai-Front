@@ -12,7 +12,7 @@ import {
   openModalCombined,
 } from "../../store/slice/combinedPiecesSlice";
 
-const CardOrderCombinedPieces = () => {
+const CardsOrderCombinedPieces = () => {
   const [combinedSelected, setCombinedSelected] = useState(null);
 
   const dispatch = useDispatch();
@@ -50,18 +50,13 @@ const CardOrderCombinedPieces = () => {
       {!combinedLoading &&
         !combinedError &&
         combinedItems?.map((combinedPiece) => {
-          let price =
-            combinedPiece.piecesData[0].price_4p +
-            combinedPiece.piecesData[1].price_4p +
-            combinedPiece.piecesData[2].price_4p;
           return (
             <CardCombinedPieces
               key={`${combinedPiece._id}`}
               onClick={() => handleCardClick(combinedPiece)}
               backImg={combinedPiece.img}
             >
-              <section className="info">
-                <span>Desde ${price}</span>
+                {/* <span>Desde ${price}</span> */}
 
                 <p>{combinedPiece.description}</p>
                 <h4>{combinedPiece.name}</h4>
@@ -69,7 +64,6 @@ const CardOrderCombinedPieces = () => {
                   Ingredientes Principales : <br />{" "}
                   {combinedPiece.proteins.join(" ~ ")}
                 </p>
-              </section>
             </CardCombinedPieces>
           );
         })}
@@ -77,4 +71,4 @@ const CardOrderCombinedPieces = () => {
   );
 };
 
-export default CardOrderCombinedPieces;
+export default CardsOrderCombinedPieces;

@@ -10,6 +10,7 @@ export const PiecesContainer = styled.div`
   p {
     font-size: 3rem;
     font-weight: 800;
+    margin: 0;
   }
   @media (max-width: 900px) {
     p {

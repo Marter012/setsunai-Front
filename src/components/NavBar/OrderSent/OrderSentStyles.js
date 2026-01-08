@@ -10,7 +10,13 @@ export const ContainerOrderSent = styled.form`
   align-items: center;
   gap: 10px;
   text-align: center;
-
+svg{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: rgb(191, 168, 120);
+  cursor: pointer;
+}
   h4 {
     margin-top: 15px;
     font-size: 1.6rem;
@@ -29,7 +35,7 @@ export const ContainerOrderSent = styled.form`
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0;
     &.total {
       font-weight: bold;

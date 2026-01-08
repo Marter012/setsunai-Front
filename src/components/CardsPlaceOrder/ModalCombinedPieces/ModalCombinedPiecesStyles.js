@@ -1,159 +1,213 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { CardOrderPieces } from "../CardsOrderStyles";
 
+/* =========================
+   CONTENEDOR MODAL
+========================= */
 export const ModalContainerCP = styled(motion.div)`
   width: 80%;
-  height: 80%;
+  height: 80vh;
   margin-top: 5vh;
   position: fixed;
-  z-index: +100;
+  z-index: 100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
   scrollbar-width: none;
+
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px;  
   align-items: center;
-  gap: 20px;
-
+  flex-shrink: 0;
+  background-image: url(${(props) => props.img});
+  background-size: cover;
+  background-position: center;
   border: 2px solid #f4e9d8;
+  
   h2 {
+    color: rgb(232, 209, 170);
     font-size: 3rem;
-    margin-top: 10px;
-    margin-bottom: 0;
-    color: #f4e9d8;
+    margin: 0;
+    text-align: center;
   }
 
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
-    z-index: -1;
-  }
-
-  /* 📱 TABLET */
   @media (max-width: 900px) {
-    width: 80%;
-    height: 70%;
+    width: 90%;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 0;
     h2 {
       font-size: 2.2rem;
     }
   }
+`;
 
-  /* 📱 MOBILE */
-  @media (max-width: 600px) {
-    margin-top: 0;
+/* =========================
+   CARD GENERAL
+========================= */
+export const ModalCardCombinedPieces = styled.div`
+  width: 92%;
+  flex-shrink: 0;
+  padding: 12px;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 12px;
 
-    h2 {
-      font-size: 1.8rem;
+  background-color: rgb(232, 209, 170);
+  border-radius: 14px;
+  p,
+  h4 {
+    margin: 0;
+  }
+
+  /* ===== BLOQUE PRECIOS ===== */
+  /* ===== BLOQUE PRECIOS ===== */
+  .discount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .priceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .finalPrice {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #1d3e32;
+  }
+
+  .discountPercent {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+
+  .basePrice {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+`;
+
+/* =========================
+   SUBCOMBOS
+========================= */
+export const ComboWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  input {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+
+  label {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+
+    span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      max-width: 70%;
+    }
+  }
+  @media (max-width: 900px) {
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+    .discount {
+      display: flex;
+      flex-direction: row;
     }
   }
 `;
 
-export const ModalCardCombinedPieces = styled(CardOrderPieces)`
-  width: 90%;
-  min-height: 100px !important;
-  padding: 0;
-  flex-direction: column;
-  &&:hover {
-    filter: brightness(1.1);
-  }
-  border-bottom-left-radius: 10px;
+/* =========================
+   BOTÓN STICKY FINAL
+========================= */
+export const SectionButton = styled.div`
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: #1d3e32;
+  padding: 14px 18px;
 
-  p,
-  h4 {
-    margin: 0;
-    padding: 0;
-  }
-  h4 {
-    width: 100%;
-    font-size: 1.2rem;
-    text-align: center;
-    border-bottom: 1px solid black;
-  }
-  .separatorDiv {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-  .left {
-    width: 50%;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 10;
+  color: #fff;
+
+  .sectionAdds {
+    width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
     p {
-      font-size: 1.2rem;
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
     }
   }
-
-  .right {
-    width: 60%;
+  .selectedOptions {
+    width: 80%;
     display: flex;
-    .dataSent {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    span {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.9;
     }
+  }
+
+  .dataOrder {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     p {
-      font-size: 1.8rem;
-      font-weight: 800;
-    }
-    div {
-      width: 50%;
-      align-items: center;
-      gap: 10px;
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin: 0;
+      color: white;
+      white-space: nowrap;
     }
   }
 
-  /* 📱 TABLET */
-  @media (max-width: 900px) {
-    min-height: 90px;
-
-    .left {
-      h4 {
-        font-size: 1.4rem;
-      }
-
-      div p {
-        font-size: 0.9rem;
-      }
-    }
-
-    .right p {
-      font-size: 1.5rem;
-    }
-  }
-
-  /* 📱 MOBILE */
   @media (max-width: 600px) {
-    min-height: 200px !important;
-    .separatorDiv {
-      flex-direction: column;
-    }
-    h4 {
-      padding: 20px;
-      font-size: 1.2rem;
-    }
-    .left {
-      width: 100%;
-      height: 30%;
-    }
+    flex-direction: column;
+    align-items: stretch;
 
-    .right {
+    .dataOrder {
+      justify-content: space-between;
       width: 100%;
-      height: 100%;
-      p {
-        font-size: 1.3rem;
-      }
     }
   }
 `;

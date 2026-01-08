@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonAddStyled = styled.div`
-  width: 100%;
+  min-width: 100px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,9 +11,13 @@ export const ButtonAddStyled = styled.div`
     font-size: 1.5rem !important;
     color: #111;
   }
+    .paddingAct {
+    padding: 5px 15px;
+  }
 
   button {
-    padding: 5px 12px;
+    min-height: 30px !important;
+    min-width: 30px !important;
     border-radius: 24px;
     border: none;
     font-size: 1.2rem;

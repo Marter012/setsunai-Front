@@ -2,7 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchPieces = createAsyncThunk("pieces/fetchPieces", async () => {
-  const res = await axios.get("https://setsunai-api.onrender.com/authPiece/pieces");
+  const res = await axios.get(
+    "https://decent-aurora-setsunai-cc7a0add.koyeb.app/authPiece/pieces"
+  );
   return res.data;
 });
 
@@ -21,7 +23,8 @@ const piecesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchPieces.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = action.payload.filter((item) => item.state === true);
+
         state.loading = false;
       })
       .addCase(fetchPieces.rejected, (state, action) => {

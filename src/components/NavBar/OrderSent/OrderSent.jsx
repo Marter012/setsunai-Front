@@ -7,7 +7,7 @@ import {
   toggleCart,
 } from "../../../store/slice/cartSlice";
 import { toggleOverlay } from "../../../store/slice/overlaySlice";
-
+import { IoMdArrowRoundBack } from "react-icons/io";
 const OrderSent = () => {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState({ name: false, paymentMethod: false });
@@ -19,6 +19,55 @@ const OrderSent = () => {
     (acc, item) => acc + item.finalPrice * item.quantity,
     0
   );
+
+const formatSelections = (selections) => {
+  if (!selections) return "";
+
+  const SALSAS_LABELS = {
+    soja: "Salsa de Soja",
+    teriyaki: "Salsa Teriyaki",
+    buenosAires: "Salsa Buenos Aires",
+  };
+
+  const EXTRAS_LABELS = {
+    palitos: "Palitos",
+    wasabi: "Wasabi",
+    jengibreEncurtido: "Jengibre Encurtido",
+  };
+
+  const include = selections.include || {};
+
+  const salsaText = include.salsa
+    ? `Salsa:\n- ${SALSAS_LABELS[include.salsa]}`
+    : "";
+
+  const incluyeText = Object.entries(include)
+    .filter(([key, value]) => value === true && key !== "salsa")
+    .map(([key]) => `- ${EXTRAS_LABELS[key]}`)
+    .join("\n");
+
+  const incluyeBlock = incluyeText
+    ? `Incluye:\n${incluyeText}`
+    : "";
+
+  const extrasBlock =
+    selections.extras?.length > 0
+      ? `Extras:\n${selections.extras
+          .map((item) => `- ${item.name}`)
+          .join("\n")}`
+      : "";
+
+  const bebidasBlock =
+    selections.drinks?.length > 0
+      ? `Bebidas:\n${selections.drinks
+          .map((item) => `- ${item.name}`)
+          .join("\n")}`
+      : "";
+
+  return [salsaText, incluyeBlock, extrasBlock, bebidasBlock]
+    .filter(Boolean)
+    .join("\n");
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,8 +99,14 @@ const OrderSent = () => {
 
 🧾 *Detalle del pedido:*
 ${cartItems
-  .map((item) => `- ${item.quantity} x *${item.name}* ${item.selectedSize} piezas — $${item.finalPrice}`)
-  .join("\n")}
+  .map(
+    (item) =>
+      `- ${item.quantity} x *${item.name}* ${item.selectedSize} piezas — $${
+        item.finalPrice
+      }
+${formatSelections(item.selections)}`
+  )
+  .join("\n\n")}
 
 💰 *Total:* $${total}
 
@@ -67,13 +122,14 @@ ${cartItems
     setPaymentMethod("");
     dispatch(clearCart());
     dispatch(toggleCart());
-    dispatch(toggleOverlay())
+    dispatch(toggleOverlay());
     dispatch(activeOrder());
   };
 
   return (
     <ContainerOrderSent as="form" onSubmit={handleSubmit}>
-      <h4>¡Tu pedido está en proceso! 🍣</h4>
+      <IoMdArrowRoundBack onClick={() => dispatch(activeOrder())} />
+      <h4>¡Tu pedido! 🍣</h4>
 
       <input
         type="text"
@@ -87,7 +143,7 @@ ${cartItems
         }}
         className={errors.name ? "error" : ""}
       />
-      <p>Tienes {cartItems.length} productos en tu carrito.</p>
+      <p>Tienes {cartItems.length} producto's en tu carrito.</p>
       <p className="total">Total: ${total.toFixed(2)}</p>
 
       <p>Puedes seleccionar entre:</p>
@@ -119,8 +175,8 @@ ${cartItems
       </div>
 
       <p>
-        Una vez que confirmes tu pedido, te enviaremos la información necesaria
-        para completar tu pago y preparar tu comida. <br />
+        Una vez confirmado, te enviaremos la información necesaria para
+        completar tu pago y preparar tu comida. <br />
         ¡Estamos ansiosos para que la disfrutes!
       </p>
 
