@@ -15,12 +15,14 @@ export const Container = styled.div`
     background-color: #1d3e32;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
+    order:3;
     .linea {
       display: none;
     }
+    
   }
 `;
 
@@ -38,8 +40,13 @@ export const SaucesWrapper = styled.div`
     font-weight: 800;
     color: #64748b;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 500px) {
     width: 100%;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -82,6 +89,11 @@ export const CheckboxWrapper = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+  }
+  @media (max-width: 500px) {
+    label {
+      min-width: 200px;
+    }
   }
 `;
 

@@ -56,6 +56,7 @@ const CardOrderPiece = ({ piece }) => {
               cartKey,
             }}
           />
+          
         </div>
       </CardOrderStyle>
 

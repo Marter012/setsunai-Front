@@ -22,7 +22,6 @@ export const CardOrderStyle = styled.div`
   width: 100%;
   height: 70%;
   align-items: center;
-  
   img {
     width: 20%;
     height: 100%;
@@ -47,14 +46,19 @@ export const CardOrderStyle = styled.div`
   .btnPieces {
     width: 100%;
     display: flex;
-
+    justify-content: center;
+    align-items: center;
     h4 {
       width: 70%;
     }
 
     span {
+      min-width: 40px;
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #bfa878;
-      padding: 5px 10px;
       border-radius: 10px;
       border: 2px solid #bfa878;
       cursor: pointer;
@@ -89,35 +93,29 @@ export const CardOrderStyle = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
-    width: 95%;
-    padding: 10px;
-
+  @media (max-width: 500px) {
     flex-direction: column;
-    gap: 5px;
+    align-items: stretch;
 
     img {
       width: 100%;
-      height: 120px;
-      border-radius: 10px;
-      object-fit: cover;
+      height: 160px;
+      order: 1;
     }
 
     section {
       width: 100%;
-      order: 1;
-
-      h4 {
-        font-size: 1.3rem;
-      }
+      order: 2;
     }
 
     .buttons {
       width: 100%;
-      order: 2;
+      order: 3;               /* 🔥 se va al final */
+      margin-top: 10px;
+
       display: flex;
-      justify-content: center;
-      margin-top: 5px;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 `;

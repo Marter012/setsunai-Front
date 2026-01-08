@@ -6,20 +6,23 @@ import styled from "styled-components";
 ========================= */
 export const ModalContainerCP = styled(motion.div)`
   width: 80%;
-  height: 80vh;
+  min-height: 80vh;
+  max-height: 80vh;
   margin-top: 5vh;
+
   position: fixed;
   z-index: 100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   overflow-y: auto;
-  scrollbar-width: none;
 
   display: flex;
   flex-wrap: wrap;
   gap: 12px;  
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   background-image: url(${(props) => props.img});
   background-size: cover;
@@ -38,7 +41,6 @@ export const ModalContainerCP = styled(motion.div)`
   }
 
   @media (max-width: 600px) {
-    margin-top: 0;
     h2 {
       font-size: 2.2rem;
     }
@@ -56,7 +58,7 @@ export const ModalCardCombinedPieces = styled.div`
   flex-shrink: 0;
   flex-direction: column;
   gap: 12px;
-
+  
   background-color: rgb(232, 209, 170);
   border-radius: 14px;
   p,
@@ -99,6 +101,9 @@ export const ModalCardCombinedPieces = styled.div`
     font-weight: 600;
     opacity: 0.6;
     text-decoration: line-through;
+  }
+  @media (max-width: 900px) {
+    width: 90%;
   }
 `;
 
@@ -204,10 +209,9 @@ export const SectionButton = styled.div`
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: stretch;
-
-    .dataOrder {
-      justify-content: space-between;
+    .dataOrder,.sectionAdds,.selectedOptions {
       width: 100%;
+      justify-content: space-between;
     }
   }
 `;
