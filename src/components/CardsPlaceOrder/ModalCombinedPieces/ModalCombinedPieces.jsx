@@ -10,6 +10,7 @@ import ButtonAddItem from "../../utils/Buttons/ButtonAddItem";
 import SectionProductsAdd from "../../SectionProductsAdd/SectionProductsAdd";
 import SectionBonusProduct from "../../SectionProductsAdd/SectionBonusProduct";
 import { useSelections } from "../../../hooks/useSelections";
+import { CiCircleChevUp } from "react-icons/ci";
 
 const SALSAS_LABELS = {
   soja: "Salsa de Soja",
@@ -41,6 +42,8 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
   const [selectedSubcombo, setSelectedSubcombo] = useState(null);
   const { get, updateInclude, toggleItem } = useSelections();
 
+  const [activeDescription, setActiveDescription] = useState(false);
+
   const comboWithSelectedId = comboVariants.filter(
     (combo) => combo.comboCode === combinedSelected.code
   );
@@ -64,6 +67,10 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
       )}`
     : null;
 
+  const visibleCombos = selectedSubcombo
+    ? comboWithSelectedId.filter((sub) => sub._id === selectedSubcombo)
+    : comboWithSelectedId;
+
   return (
     <ModalContainerCP
       initial={{ opacity: 0 }}
@@ -76,7 +83,7 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
 
       {/* SUBCOMBOS */}
       <ModalCardCombinedPieces>
-        {comboWithSelectedId.map((sub) => (
+        {visibleCombos.map((sub) => (
           <ComboWrapper key={sub._id}>
             <input
               type="checkbox"
@@ -179,15 +186,16 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
                     {combinedSelected.name} {selectedCombo.totalPieces} piezas
                   </p>
 
-                  <div className="selectedOptions">
+                  <div className={`selectedOptions ${activeDescription ? "isActive" : ""}`}>
                     <span>
-                      Incluye :
-                      {includeText ? ` ${includeText}` : " -- "}
+                      Incluye :{includeText ? ` ${includeText}` : " -- "}
                     </span>
                     <span>
                       {" "}
                       Salsa:
-                      {salsaLabel ? ` ${salsaLabel.split(" ").slice(1).join(" ")}` : " -- "}
+                      {salsaLabel
+                        ? ` ${salsaLabel.split(" ").slice(1).join(" ")}`
+                        : " -- "}
                     </span>
                     <span>
                       Extras:
@@ -217,6 +225,10 @@ const ModalCombinedPieces = ({ combinedSelected }) => {
               }}
             />
           </div>
+          <CiCircleChevUp
+            onClick={() => setActiveDescription(!activeDescription)}
+            className={`${activeDescription ? "rotate" : ""}`}
+          />
         </SectionButton>
       )}
     </ModalContainerCP>

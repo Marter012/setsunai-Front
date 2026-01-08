@@ -167,7 +167,6 @@ export const SectionButton = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-
   z-index: 10;
   color: #fff;
 
@@ -188,11 +187,20 @@ export const SectionButton = styled.div`
     flex-direction: column;
     align-items: start;
     text-align: start;
+
     span {
       font-size: 1.1rem;
       font-weight: 600;
       opacity: 0.9;
     }
+  }
+  .isActive {
+    display: none;
+    transition: 0.3s;
+  }
+  .rotate {
+    rotate: 0deg;
+    transition: 0.3s;
   }
 
   .dataOrder {
@@ -206,6 +214,16 @@ export const SectionButton = styled.div`
       color: white;
       white-space: nowrap;
     }
+  }
+
+  svg {
+    font-size: 2rem;
+    position: absolute;
+    top: 10;
+    left: 10;
+    cursor: pointer;
+    rotate: 180deg;
+    transition: 0.3s;
   }
 
   @media (max-width: 600px) {
